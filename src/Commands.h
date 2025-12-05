@@ -124,16 +124,16 @@ Cmd* enum (e.g. CmdOpen) and a human-readable name (not used yet).
     V(CmdOpenEmbeddedPDF, "Open Embedded PDF")                                     \
     V(CmdSaveAttachment, "Save Attachment...")                                     \
     V(CmdOpenAttachment, "Open Attachment")                                        \
-    V(CmdOptions, "Options...")                                                    \
-    V(CmdAdvancedOptions, "Advanced Options...")                                   \
-    V(CmdAdvancedSettings, "Advanced Settings...")                                 \
-    V(CmdChangeLanguage, "Change Language...")                                     \
-    V(CmdCheckUpdate, "Check For Updates")                                         \
     V(CmdHelpOpenManual, "Help: Manual")                                           \
     V(CmdHelpOpenManualOnWebsite, "Help: Manual On Website")                       \
     V(CmdHelpOpenKeyboardShortcuts, "Help: Keyboard Shortcuts")                    \
     V(CmdHelpVisitWebsite, "Help: SumatraPDF Website")                             \
     V(CmdHelpAbout, "Help: About SumatraPDF")                                      \
+    V(CmdOptions, "Options...")                                                    \
+    V(CmdAdvancedOptions, "Advanced Options...")                                   \
+    V(CmdAdvancedSettings, "Advanced Settings...")                                 \
+    V(CmdChangeLanguage, "Change Language")                                        \
+    V(CmdCheckUpdate, "Check For Updates")                                         \
     V(CmdMoveFrameFocus, "Move Frame Focus")                                       \
     V(CmdFavoriteAdd, "Add Favorite")                                              \
     V(CmdFavoriteDel, "Delete Favorite")                                           \
@@ -224,7 +224,11 @@ enum {
     CmdFavoriteFirst,
     CmdFavoriteLast = CmdFavoriteFirst + 256,
 
-    CmdLast = CmdFavoriteLast,
+    /* range for encodings */
+    CmdEncodingFirst,
+    CmdEncodingLast = CmdEncodingFirst + 256,
+
+    CmdLast = CmdEncodingLast,
     CmdFirstCustom = CmdLast + 100,
 
     // aliases, at the end to not mess ordering

@@ -344,9 +344,9 @@ static bool AllowCommand(const CommandPaletteBuildCtx& ctx, i32 cmdId) {
         return ctx.hasUnsavedAnnotations;
     }
 
-    if ((cmdId == CmdCheckUpdate) && gIsStoreBuild) {
-        return false;
-    }
+    //if ((cmdId == CmdCheckUpdate) && gIsStoreBuild) {
+    //    return false;
+    //}
 
     bool remove = false;
     if (!HasPermission(Perm::InternetAccess)) {

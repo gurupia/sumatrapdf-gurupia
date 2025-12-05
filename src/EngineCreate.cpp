@@ -109,12 +109,6 @@ static EngineBase* CreateEngineForKind(Kind kind, const char* path, PasswordUI* 
             return engine;
         }
     }
-#if 0
-    if (kind == kindFileTxt) {
-        engine = CreateEngineTxtFromFile(path);
-        return engine;
-    }
-#endif
 
     if (kind == kindFileEpub) {
         engine = CreateEngineEpubFromFile(path);

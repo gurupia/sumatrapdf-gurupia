@@ -1,0 +1,747 @@
+msbuild 버전 18.0.5+e22287bf1(.NET Framework용)
+빌드 시작: 2025-12-04 오후 3:38:30
+
+     1>1 노드의 "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln" 프로젝트(Build 대상)입니다.
+     1>ValidateSolutionConfiguration:
+         솔루션 구성 "Debug|x64"을(를) 빌드하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 15 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\libwebp.vcxproj"(5)을(를) 빌드하고 있습니다(기본 대상).
+     5>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 3 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\unarrlib.vcxproj"(7)을(를) 빌드하고 있습니다(기본 대상).
+     7>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\unarrlib\unarrlib.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\unarrlib\unarrlib.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 10 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\utils.vcxproj"(8)을(를) 빌드하고 있습니다(기본 대상).
+     8>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\utils\utils.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\utils\utils.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 17 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\test_util.vcxproj"(18)을(를) 빌드하고 있습니다(기본 대상).
+    18>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 1 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\zlib.vcxproj"(4)을(를) 빌드하고 있습니다(기본 대상).
+     4>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     5>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\libwebp\libwebp.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libwebp\libwebp.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     4>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\zlib\zlib.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 20 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\chm.vcxproj"(6)을(를) 빌드하고 있습니다(기본 대상).
+     6>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     4>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\zlib\zlib.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     6>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\chm\chm.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\chm\chm.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    18>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\test_util\test_util.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\test_util\test_util.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 5 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\libheif.vcxproj"(17)을(를) 빌드하고 있습니다(기본 대상).
+    17>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\libheif\libheif.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libheif\libheif.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 9 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\unrar.vcxproj"(21)을(를) 빌드하고 있습니다(기본 대상).
+    21>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\unrar\unrar.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\unrar\unrar.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 19 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\sizer.vcxproj"(11)을(를) 빌드하고 있습니다(기본 대상).
+    11>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\sizer\sizer.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\sizer\sizer.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     8>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 8 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\libdjvu.vcxproj"(19)을(를) 빌드하고 있습니다(기본 대상).
+    19>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\libdjvu\libdjvu.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libdjvu\libdjvu.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    18>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 6 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\bin2coff.vcxproj"(20)을(를) 빌드하고 있습니다(기본 대상).
+    20>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 12 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\mupdf-libs.vcxproj"(22)을(를) 빌드하고 있습니다(기본 대상).
+    22>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 14 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\dav1d.vcxproj"(12)을(를) 빌드하고 있습니다(기본 대상).
+    12>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     6>ClCompile:
+         모든 출력이 최신 상태입니다.
+    12>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\dav1d\dav1d.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\dav1d\dav1d.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+       CustomBuild:
+         모든 출력이 최신 상태입니다.
+    11>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+    22>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\mupdf-libs\mupdf-libs.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\mupdf-libs\mupdf-libs.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+       CustomBuild:
+         모든 출력이 최신 상태입니다.
+     4>ClCompile:
+         모든 출력이 최신 상태입니다.
+     5>ClCompile:
+         모든 출력이 최신 상태입니다.
+    21>ClCompile:
+         모든 출력이 최신 상태입니다.
+    17>ClCompile:
+         모든 출력이 최신 상태입니다.
+     6>Lib:
+         모든 출력이 최신 상태입니다.
+         chm.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\chm.lib
+    21>ResourceCompile:
+         모든 출력이 최신 상태입니다.
+     7>ClCompile:
+         모든 출력이 최신 상태입니다.
+    20>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\bin2coff\bin2coff.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\bin2coff\bin2coff.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+     7>Lib:
+         모든 출력이 최신 상태입니다.
+         unarrlib.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\unarrlib.lib
+    20>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+     6>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\chm\chm.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\chm\chm.tlog\chm.lastbuildstate"에 연결(touching)하고 있습니다.
+     6>"F:\repos\sumatrapdf-gurupia\vs2022\chm.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+     4>Lib:
+         모든 출력이 최신 상태입니다.
+         zlib.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\zlib.lib
+    11>ClCompile:
+         모든 출력이 최신 상태입니다.
+    21>Lib:
+         모든 출력이 최신 상태입니다.
+         unrar.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\unrar.lib
+     7>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\unarrlib\unarrlib.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+    11>ClCompile:
+         모든 출력이 최신 상태입니다.
+     7>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\unarrlib\unarrlib.tlog\unarrlib.lastbuildstate"에 연결(touching)하고 있습니다.
+    12>ClCompile:
+         모든 출력이 최신 상태입니다.
+     4>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\zlib\zlib.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\zlib\zlib.tlog\zlib.lastbuildstate"에 연결(touching)하고 있습니다.
+     4>"F:\repos\sumatrapdf-gurupia\vs2022\zlib.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    20>ClCompile:
+         모든 출력이 최신 상태입니다.
+    21>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\unrar\unrar.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\unrar\unrar.tlog\unrar.lastbuildstate"에 연결(touching)하고 있습니다.
+    21>"F:\repos\sumatrapdf-gurupia\vs2022\unrar.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    17>Lib:
+         모든 출력이 최신 상태입니다.
+     5>Lib:
+         모든 출력이 최신 상태입니다.
+    12>ClCompile:
+         모든 출력이 최신 상태입니다.
+    17>Lib:
+         libheif.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\libheif.lib
+    12>Lib:
+         모든 출력이 최신 상태입니다.
+     7>"F:\repos\sumatrapdf-gurupia\vs2022\unarrlib.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    12>Lib:
+         dav1d.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\dav1d.lib
+    17>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libheif\libheif.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libheif\libheif.tlog\libheif.lastbuildstate"에 연결(touching)하고 있습니다.
+     5>Lib:
+         libwebp.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\libwebp.lib
+    17>"F:\repos\sumatrapdf-gurupia\vs2022\libheif.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    18>ClCompile:
+         모든 출력이 최신 상태입니다.
+    19>ClCompile:
+         모든 출력이 최신 상태입니다.
+     8>ClCompile:
+         모든 출력이 최신 상태입니다.
+    11>Link:
+         모든 출력이 최신 상태입니다.
+         sizer.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\sizer.exe
+    22>ClCompile:
+         모든 출력이 최신 상태입니다.
+    19>Lib:
+         모든 출력이 최신 상태입니다.
+         libdjvu.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\libdjvu.lib
+    12>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\dav1d\dav1d.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\dav1d\dav1d.tlog\dav1d.lastbuildstate"에 연결(touching)하고 있습니다.
+    12>"F:\repos\sumatrapdf-gurupia\vs2022\dav1d.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    20>Link:
+         모든 출력이 최신 상태입니다.
+     8>Lib:
+         모든 출력이 최신 상태입니다.
+     5>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libwebp\libwebp.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+    20>Link:
+         bin2coff.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\bin2coff.exe
+     5>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libwebp\libwebp.tlog\libwebp.lastbuildstate"에 연결(touching)하고 있습니다.
+     8>Lib:
+         utils.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\utils.lib
+     5>"F:\repos\sumatrapdf-gurupia\vs2022\libwebp.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    11>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\sizer\sizer.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+    19>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libdjvu\libdjvu.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libdjvu\libdjvu.tlog\libdjvu.lastbuildstate"에 연결(touching)하고 있습니다.
+    11>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\sizer\sizer.tlog\sizer.lastbuildstate"에 연결(touching)하고 있습니다.
+    11>"F:\repos\sumatrapdf-gurupia\vs2022\sizer.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    19>"F:\repos\sumatrapdf-gurupia\vs2022\libdjvu.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    20>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\bin2coff\bin2coff.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\bin2coff\bin2coff.tlog\bin2coff.lastbuildstate"에 연결(touching)하고 있습니다.
+    20>"F:\repos\sumatrapdf-gurupia\vs2022\bin2coff.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    18>Link:
+         모든 출력이 최신 상태입니다.
+     8>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\utils\utils.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+    22>ClCompile:
+         모든 출력이 최신 상태입니다.
+     8>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\utils\utils.tlog\utils.lastbuildstate"에 연결(touching)하고 있습니다.
+    18>Link:
+         test_util.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\test_util.exe
+     8>"F:\repos\sumatrapdf-gurupia\vs2022\utils.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    22>Lib:
+         모든 출력이 최신 상태입니다.
+    18>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\test_util\test_util.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\test_util\test_util.tlog\test_util.lastbuildstate"에 연결(touching)하고 있습니다.
+    22>Lib:
+         mupdf-libs.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\mupdf-libs.lib
+    18>"F:\repos\sumatrapdf-gurupia\vs2022\test_util.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    22>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\mupdf-libs\mupdf-libs.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\mupdf-libs\mupdf-libs.tlog\mupdf-libs.lastbuildstate"에 연결(touching)하고 있습니다.
+    22>"F:\repos\sumatrapdf-gurupia\vs2022\mupdf-libs.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 18 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\mupdf.vcxproj"(14)을(를) 빌드하고 있습니다(기본 대상).
+    14>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\mupdf\mupdf.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\mupdf\mupdf.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+       CustomBuild:
+         모든 출력이 최신 상태입니다.
+       ClCompile:
+         모든 출력이 최신 상태입니다.
+       Lib:
+         모든 출력이 최신 상태입니다.
+         mupdf.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\mupdf.lib
+       FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\mupdf\mupdf.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\mupdf\mupdf.tlog\mupdf.lastbuildstate"에 연결(touching)하고 있습니다.
+    14>"F:\repos\sumatrapdf-gurupia\vs2022\mupdf.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 4 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj"(23)을(를) 빌드하고 있습니다(기본 대상).
+    23>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 16 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\libmupdf.vcxproj"(16)을(를) 빌드하고 있습니다(기본 대상).
+    16>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 13 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\plugin-test.vcxproj"(15)을(를) 빌드하고 있습니다(기본 대상).
+    15>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 11 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\signfile.vcxproj"(13)을(를) 빌드하고 있습니다(기본 대상).
+    13>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+       InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\signfile\signfile.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+    15>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\plugin-test\plugin-test.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+    23>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\SumatraPDF\SumatraPDF.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    16>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\libmupdf\libmupdf.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+    13>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\signfile\signfile.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    15>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\plugin-test\plugin-test.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    16>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libmupdf\libmupdf.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    13>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+    15>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+    13>ComputeStdModulesCompileInputs:
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+    15>ComputeStdModulesCompileInputs:
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+    13>ComputeStdModulesCompileInputs:
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+    23>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+    16>ClCompile:
+         모든 출력이 최신 상태입니다.
+       ResourceCompile:
+         모든 출력이 최신 상태입니다.
+    15>ClCompile:
+         모든 출력이 최신 상태입니다.
+    13>ClCompile:
+         모든 출력이 최신 상태입니다.
+    16>Link:
+         모든 출력이 최신 상태입니다.
+         libmupdf.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\libmupdf.dll
+    15>Link:
+         모든 출력이 최신 상태입니다.
+    13>Link:
+         모든 출력이 최신 상태입니다.
+    15>Link:
+         plugin-test.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\plugin-test.exe
+    16>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\libmupdf\libmupdf.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\libmupdf\libmupdf.tlog\libmupdf.lastbuildstate"에 연결(touching)하고 있습니다.
+    13>Link:
+         signfile.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\signfile.exe
+    16>"F:\repos\sumatrapdf-gurupia\vs2022\libmupdf.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 7 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\PdfFilter.vcxproj"(9)을(를) 빌드하고 있습니다(기본 대상).
+     9>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(1) 프로젝트가 2 노드에서 "F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj"(10)을(를) 빌드하고 있습니다(기본 대상).
+    10>PrepareForBuild:
+         구조적 출력을 사용할 수 있습니다. 컴파일러 진단의 서식은 오류 계층 구조를 반영합니다. 자세한 내용은 https://aka.ms/cpp/structured-output을 참조하세요.
+     9>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "..\out\dbg64\obj\x64\Debug\PdfFilter\PdfFilter.tlog\unsuccessfulbuild"을(를) 만들고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\PdfFilter\PdfFilter.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    10>InitializeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\PdfPreview\PdfPreview.tlog\unsuccessfulbuild"에 연결(touching)하고 있습니다.
+    15>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\plugin-test\plugin-test.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\plugin-test\plugin-test.tlog\plugin-test.lastbuildstate"에 연결(touching)하고 있습니다.
+    13>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\signfile\signfile.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+    15>"F:\repos\sumatrapdf-gurupia\vs2022\plugin-test.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    13>FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\signfile\signfile.tlog\signfile.lastbuildstate"에 연결(touching)하고 있습니다.
+    13>"F:\repos\sumatrapdf-gurupia\vs2022\signfile.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    10>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+     9>ComputeStdModulesCompileInputs:
+         라이브러리 'microsoft/STL'에 대한 데이터를 제공하는 라이브러리 매니페스트 파일 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\modules.json'을(를) 읽는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.ixx'을(를) 추가하는 중입니다.
+         이 프로젝트로 빌드할 라이브러리 'microsoft/STL'의 모듈 원본 'D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\modules\std.compat.ixx'을(를) 추가하는 중입니다.
+    23>ClCompile:
+         D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /I..\src /I..\mupdf\include /I..\ext\libdjvu /I..\ext\CHMLib /I..\ext\darkmodelib\include /I..\packages\Microsoft.Web.WebView2.1.0.992.28\build\native\include /I..\ext\zlib /I..\ext\synctex /Zi /nologo /W4 /WX /diagnostics:column /MP /Od /D WIN32 /D _WIN32 /D WINVER=0x0605 /D _WIN32_WINNT=0x0603 /D _HAS_ITERATOR_DEBUGGING=0 /D DEBUG /D _DARKMODELIB_NO_INI_CONFIG /D _CRT_SECURE_NO_WARNINGS /D DISABLE_DOCUMENT_RESTRICTIONS /D _HAS_EXCEPTIONS=0 /D _UNICODE /D UNICODE /Gm- /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /std:c++latest /Fo"..\out\dbg64\obj\x64\Debug\SumatraPDF\\" /Fd"..\out\dbg64\obj\x64\Debug\SumatraPDF\vc143.pdb" /external:W3 /Gd /TP /wd4127 /wd4189 /wd4324 /wd4458 /wd4522 /wd4611 /wd4800 /wd6319 /wd4100 /wd4244 /wd4267 /wd4702 /wd4706 /wd4819 /wd4302 /wd4311 /wd4838 /FC /errorReport:queue ..\src\CommandPalette.cpp ..\src\EngineEbook.cpp ..\src\TableOfContents.cpp ..\src\Toolbar.cpp
+     9>ClCompile:
+         모든 출력이 최신 상태입니다.
+       ResourceCompile:
+         모든 출력이 최신 상태입니다.
+    10>ClCompile:
+         D:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\CL.exe /c /I..\src /I..\src\wingui /I..\mupdf\include /I..\ext\libdjvu /I..\ext\CHMLib /Zi /nologo /W4 /WX- /diagnostics:column /MP /Od /D WIN32 /D _WIN32 /D WINVER=0x0605 /D _WIN32_WINNT=0x0603 /D _HAS_ITERATOR_DEBUGGING=0 /D DEBUG /D BUILD_EPUB_PREVIEW /D BUILD_FB2_PREVIEW /D BUILD_MOBI_PREVIEW /D _HAS_EXCEPTIONS=0 /D _WINDLL /D _UNICODE /D UNICODE /Gm- /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /std:c++latest /Fo"..\out\dbg64\obj\x64\Debug\PdfPreview\\" /Fd"..\out\dbg64\obj\x64\Debug\PdfPreview\vc143.pdb" /external:W3 /Gd /TP /wd4127 /wd4189 /wd4324 /wd4458 /wd4522 /wd4611 /wd4702 /wd4800 /wd6319 /wd4100 /wd4838 /FC /errorReport:queue ..\src\EngineEbook.cpp
+     9>Link:
+         모든 출력이 최신 상태입니다.
+         PdfFilter.vcxproj -> F:\repos\sumatrapdf-gurupia\out\dbg64\PdfFilter.dll
+       FinalizeBuildStatus:
+         "..\out\dbg64\obj\x64\Debug\PdfFilter\PdfFilter.tlog\unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "..\out\dbg64\obj\x64\Debug\PdfFilter\PdfFilter.tlog\PdfFilter.lastbuildstate"에 연결(touching)하고 있습니다.
+     9>"F:\repos\sumatrapdf-gurupia\vs2022\PdfFilter.vcxproj" 프로젝트를 빌드했습니다(기본 대상).
+    10>ClCompile:
+         EngineEbook.cpp
+    23>ClCompile:
+         CommandPalette.cpp
+         EngineEbook.cpp
+         TableOfContents.cpp
+         Toolbar.cpp
+    23>F:\repos\sumatrapdf-gurupia\src\CommandPalette.cpp(67,5): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(526,9): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(503,36): error C3078: 배열 크기는 새 식에서 이니셜라이저 없이 지정되어야 합니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(605,31): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(610,27): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2131: 식이 상수로 계산되지 않았습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9):
+             'EncodingInfo' 선언을 참조하십시오.
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14):
+             상수가 아닌 식 또는 부분식이 있습니다.
+         
+    23>F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2051: case 식이 상수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+       ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9):
+             'EncodingInfo' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(129,5):
+             'Vec' 선언을 참조하십시오.
+         
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(129,5):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+       ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(120,5):
+             'Vec' 선언을 참조하십시오.
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(120,5):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(12,7):
+             'Vec' 선언을 참조하십시오.
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(12,7):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,28):
+             원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,28):
+             변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(214,12):
+             'Vec<T>::size' 선언을 참조하십시오.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32):
+             인수 목록 '()'을(를) 일치시키는 동안
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,28):
+             원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,28):
+             변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(214,12):
+             'Vec<T>::size' 선언을 참조하십시오.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32):
+             인수 목록 '()'을(를) 일치시키는 동안
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(187,8):
+             'T &Vec<T>::operator [](int) const'일 수 있습니다.
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](int) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(182,8):
+             또는       'T &Vec<T>::operator [](ULONG) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](ULONG) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(176,8):
+             또는       'T &Vec<T>::operator [](long) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](long) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(171,8):
+             또는       'T &Vec<T>::operator [](size_t) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](size_t) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+             인수 목록 '(Vec, size_t)'을(를) 일치시키는 동안
+         
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(187,8):
+             'T &Vec<T>::operator [](int) const'일 수 있습니다.
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](int) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(182,8):
+             또는       'T &Vec<T>::operator [](ULONG) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](ULONG) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(176,8):
+             또는       'T &Vec<T>::operator [](long) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](long) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(171,8):
+             또는       'T &Vec<T>::operator [](size_t) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                 'T &Vec<T>::operator [](size_t) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26):
+             인수 목록 '(Vec, size_t)'을(를) 일치시키는 동안
+         
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9):
+             'EncodingInfo' 선언을 참조하십시오.
+         
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9):
+             'EncodingInfo' 선언을 참조하십시오.
+         
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+       ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(129,5):
+             'Vec' 선언을 참조하십시오.
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(129,5):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(120,5):
+             'Vec' 선언을 참조하십시오.
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(120,5):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(12,7):
+             'Vec' 선언을 참조하십시오.
+         
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(12,7):
+             'Vec' 선언을 참조하십시오.
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+       ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,28):
+             원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,28):
+             변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(214,12):
+             'Vec<T>::size' 선언을 참조하십시오.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32):
+             인수 목록 '()'을(를) 일치시키는 동안
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,28):
+             원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,28):
+             변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(214,12):
+             'Vec<T>::size' 선언을 참조하십시오.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32):
+             인수 목록 '()'을(를) 일치시키는 동안
+         
+    10>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    10>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(187,8):
+             'T &Vec<T>::operator [](int) const'일 수 있습니다.
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](int) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(182,8):
+             또는       'T &Vec<T>::operator [](ULONG) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](ULONG) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(176,8):
+             또는       'T &Vec<T>::operator [](long) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](long) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(171,8):
+             또는       'T &Vec<T>::operator [](size_t) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](size_t) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+             인수 목록 '(Vec, size_t)'을(를) 일치시키는 동안
+         
+    23>ClCompile:
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(187,8):
+             'T &Vec<T>::operator [](int) const'일 수 있습니다.
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](int) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(182,8):
+             또는       'T &Vec<T>::operator [](ULONG) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](ULONG) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(176,8):
+             또는       'T &Vec<T>::operator [](long) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](long) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\utils\Vec.h(171,8):
+             또는       'T &Vec<T>::operator [](size_t) const'
+                 F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                 'T &Vec<T>::operator [](size_t) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     원인: 'Vec'에서 'const Vec<T>'(으)로 변환할 수 없습니다.
+                     F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+                     변환하려면 둘째 사용자 정의 변환 연산자 또는 생성자가 있어야 합니다.
+             F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26):
+             인수 목록 '(Vec, size_t)'을(를) 일치시키는 동안
+         
+    23>F:\repos\sumatrapdf-gurupia\src\Toolbar.cpp(348,23): error C2220: 다음 경고는 오류로 처리됩니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+    23>F:\repos\sumatrapdf-gurupia\src\Toolbar.cpp(348,23): warning C4456: 'dm' 선언은 이전 로컬 선언을 숨깁니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+             F:\repos\sumatrapdf-gurupia\src\Toolbar.cpp(342,19):
+             'dm' 선언을 참조하십시오.
+         
+    10>"F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj" 프로젝트를 빌드했습니다(기본 대상). - 실패
+    23>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj" 프로젝트를 빌드했습니다(기본 대상). - 실패
+     1>"F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln" 프로젝트를 빌드했습니다(Build 대상). - 실패
+
+빌드하지 못했습니다.
+
+       "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(Build 대상)(1) ->
+       "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj"(기본 대상)(23)->
+       (ClCompile 대상) -> 
+         F:\repos\sumatrapdf-gurupia\src\Toolbar.cpp(348,23): warning C4456: 'dm' 선언은 이전 로컬 선언을 숨깁니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+
+
+       "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(Build 대상)(1) ->
+       "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj"(기본 대상)(23)->
+       (ClCompile 대상) -> 
+         F:\repos\sumatrapdf-gurupia\src\CommandPalette.cpp(67,5): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(526,9): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(503,36): error C3078: 배열 크기는 새 식에서 이니셜라이저 없이 지정되어야 합니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(605,31): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(610,27): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2065: 'CmdOpenAttachment': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2131: 식이 상수로 계산되지 않았습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\TableOfContents.cpp(664,14): error C2051: case 식이 상수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\Toolbar.cpp(348,23): error C2220: 다음 경고는 오류로 처리됩니다. [F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.vcxproj]
+
+
+       "F:\repos\sumatrapdf-gurupia\vs2022\SumatraPDF.sln"(Build 대상)(1) ->
+       "F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj"(기본 대상)(10)->
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1740,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1741,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1742,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,9): error C2065: 'EncodingInfo': 선언되지 않은 식별자입니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,5): error C2923: 'Vec': 'EncodingInfo'은(는) 'T' 매개 변수에 대한 올바른 템플릿 형식 인수가 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,29): error C2653: 'EncodingRegistry': 클래스 또는 네임스페이스 이름이 아닙니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,47): error C3861: 'GetAllEncodings': 식별자를 찾을 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2641: 'Vec'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(const Vec<T> &)': '<error type>'에서 'const Vec<T> &'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2783: 'Vec<T> Vec(size_t,Allocator *)': 'T'의 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1912,27): error C2784: 'Vec<T> Vec(Vec<T>)': '<error type>'에서 'Vec<T>'에 대한 템플릿 인수를 추론할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1913,32): error C2662: 'size_t Vec<T>::size(void) const': 'this' 포인터를 'Vec'에서 'const Vec<T> &'(으)로 변환할 수 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+         F:\repos\sumatrapdf-gurupia\src\EngineEbook.cpp(1914,26): error C2678: 이항 '[': 왼쪽 피연산자로 'Vec' 형식을 사용하는 연산자가 없거나 허용되는 변환이 없습니다. [F:\repos\sumatrapdf-gurupia\vs2022\PdfPreview.vcxproj]
+
+    경고 1개
+    오류 49개
+
+경과 시간: 00:00:07.28
