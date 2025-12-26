@@ -105,36 +105,44 @@ EncodingResult EncodingDetector::DetectFromHTMLMeta(const ByteSlice& data) {
 
     // Look for <meta charset="...">
     const char* metaCharset = str::Find(start, "charset");
-    if (metaCharset && metaCharset - start < (int)len) {
-        const char* quote1 = str::FindChar(metaCharset, '"');
-        if (!quote1) {
-            quote1 = str::FindChar(metaCharset, '\'');
-        }
-        if (!quote1) {
-            // Maybe charset=utf-8 without quotes
-            const char* eq = str::FindChar(metaCharset, '=');
-            if (eq) {
-                eq++;
-                while (*eq == ' ') {
-                    eq++;
-                }
-                const char* end = eq;
-                while (*end && *end != ' ' && *end != '>' && *end != ';') {
-                    end++;
-                }
-                if (end > eq) {
-                    AutoFree encodingName = str::Dup(eq, end - eq);
-                    uint codepage = EncodingRegistry::GetCodepageByName(encodingName);
-                    if (codepage != 0) {
-                        return EncodingResult(codepage, EncodingConfidence::High, encodingName);
-                    }
-                }
+    if (!metaCharset || metaCharset - start >= (int)len) {
+        return EncodingResult();
+    }
+
+    // Try to find quoted value (charset="utf-8" or charset='utf-8')
+    const char* quote1 = str::FindChar(metaCharset, '"');
+    if (!quote1) {
+        quote1 = str::FindChar(metaCharset, '\'');
+    }
+
+    if (quote1) {
+        // Found quoted value - extract encoding name between quotes
+        // Safe: quote1 is guaranteed non-NULL here
+        quote1++;  // Skip opening quote
+        const char* quote2 = str::FindChar(quote1, quote1[-1]);  // Find matching quote
+        if (quote2 && quote2 > quote1) {
+            AutoFree encodingName = str::Dup(quote1, quote2 - quote1);
+            uint codepage = EncodingRegistry::GetCodepageByName(encodingName);
+            if (codepage != 0) {
+                return EncodingResult(codepage, EncodingConfidence::High, encodingName);
             }
-        } else {
-            quote1++;
-            const char* quote2 = str::FindChar(quote1, quote1[-1]);
-            if (quote2) {
-                AutoFree encodingName = str::Dup(quote1, quote2 - quote1);
+        }
+    } else {
+        // No quotes found - try unquoted value (charset=utf-8)
+        const char* eq = str::FindChar(metaCharset, '=');
+        if (eq) {
+            eq++;
+            // Skip whitespace after '='
+            while (*eq == ' ') {
+                eq++;
+            }
+            // Find end of value
+            const char* end = eq;
+            while (*end && *end != ' ' && *end != '>' && *end != ';') {
+                end++;
+            }
+            if (end > eq) {
+                AutoFree encodingName = str::Dup(eq, end - eq);
                 uint codepage = EncodingRegistry::GetCodepageByName(encodingName);
                 if (codepage != 0) {
                     return EncodingResult(codepage, EncodingConfidence::High, encodingName);
@@ -165,21 +173,25 @@ bool EncodingDetector::IsValidUTF8(const ByteSlice& data) {
     while (i < len) {
         u8 byte = d[i];
 
-        // ASCII (0x00-0x7F)
+        // ASCII (0x00-0x7F) - single byte
         if (byte <= 0x7F) {
             i++;
             continue;
         }
 
         // 2-byte sequence (110xxxxx 10xxxxxx)
+        // Valid range: U+0080 to U+07FF
         if ((byte & 0xE0) == 0xC0) {
+            // Need 1 more byte (i+1 must be valid index)
             if (i + 1 >= len) {
-                return false;
+                return false;  // Not enough bytes
             }
+            // Second byte must be continuation byte (10xxxxxx)
             if ((d[i + 1] & 0xC0) != 0x80) {
                 return false;
             }
-            // Check for overlong encoding
+            // Check for overlong encoding (must be >= 0xC2)
+            // 0xC0 and 0xC1 would encode values < 0x80 (should be 1-byte)
             if (byte < 0xC2) {
                 return false;
             }
@@ -188,44 +200,56 @@ bool EncodingDetector::IsValidUTF8(const ByteSlice& data) {
         }
 
         // 3-byte sequence (1110xxxx 10xxxxxx 10xxxxxx)
+        // Valid range: U+0800 to U+FFFF (excluding surrogates)
         if ((byte & 0xF0) == 0xE0) {
+            // Need 2 more bytes (i+1 and i+2 must be valid indices)
             if (i + 2 >= len) {
-                return false;
+                return false;  // Not enough bytes
             }
+            // Second and third bytes must be continuation bytes
             if ((d[i + 1] & 0xC0) != 0x80 || (d[i + 2] & 0xC0) != 0x80) {
                 return false;
             }
-            // Check for overlong encoding and surrogates
+            // Check for overlong encoding
+            // 0xE0 0x80-0x9F would encode values < 0x800 (should be 2-byte)
             if (byte == 0xE0 && d[i + 1] < 0xA0) {
                 return false;
             }
+            // Check for UTF-16 surrogates (U+D800 to U+DFFF are invalid in UTF-8)
+            // 0xED 0xA0-0xBF would encode surrogates
             if (byte == 0xED && d[i + 1] >= 0xA0) {
-                return false; // Surrogate
+                return false;
             }
             i += 3;
             continue;
         }
 
         // 4-byte sequence (11110xxx 10xxxxxx 10xxxxxx 10xxxxxx)
+        // Valid range: U+10000 to U+10FFFF
         if ((byte & 0xF8) == 0xF0) {
+            // Need 3 more bytes (i+1, i+2, i+3 must be valid indices)
             if (i + 3 >= len) {
-                return false;
+                return false;  // Not enough bytes
             }
+            // All continuation bytes must be valid
             if ((d[i + 1] & 0xC0) != 0x80 || (d[i + 2] & 0xC0) != 0x80 || (d[i + 3] & 0xC0) != 0x80) {
                 return false;
             }
-            // Check for overlong encoding and values > 0x10FFFF
+            // Check for overlong encoding
+            // 0xF0 0x80-0x8F would encode values < 0x10000 (should be 3-byte)
             if (byte == 0xF0 && d[i + 1] < 0x90) {
                 return false;
             }
-            if (byte >= 0xF4) {
+            // Check for values > U+10FFFF (maximum valid Unicode)
+            // 0xF4 0x90+ or 0xF5+ would exceed U+10FFFF
+            if (byte >= 0xF4 && (byte > 0xF4 || d[i + 1] >= 0x90)) {
                 return false;
             }
             i += 4;
             continue;
         }
 
-        // Invalid UTF-8
+        // Invalid UTF-8 start byte
         return false;
     }
 
