@@ -15,33 +15,58 @@ void EncodingDetector_UnitTests() {
         utassert(codepage == CP_UTF8);
     }
 
-    // Test CP949 (EUC-KR) detection
-    // "한글" in CP949: C7 D1 B1 DB
+    // Test EUC-KR (CP949) detection with longer text
     {
-        const char* cp949Data = "\xC7\xD1\xB1\xDB";
-        ByteSlice data((u8*)cp949Data, 4);
+        // "안녕하세요 한글 테스트" in EUC-KR
+        const char* eucKrData = "\xBE\xC8\xB3\xE7\xC7\xCF\xBC\xBC\xBF\xE4\x20"
+                                "\xC7\xD1\xB1\xDB\x20\xC5\xD7\xBD\xBA\xC6\xAE";
+        ByteSlice data((u8*)eucKrData, strlen(eucKrData));
         EncodingResult res = EncodingDetector::DetectEncoding(data);
         uint codepage = res.codepage;
-        // DetectEncoding might return CP_ACP or 949 depending on system locale or heuristics
-        // If system locale is Korean (949), it should return 949 or CP_ACP (which is 949).
-        // If system locale is not Korean, it might fail to detect specific 949 if it relies on IsLikelyANSI.
-        // However, EncodingDetector has specific logic.
-        // Let's see what it returns. Ideally it should be 949.
-        // But DetectEncoding falls back to GetACP() if not UTF-8/16/BOM.
-        // So we expect GetACP() if the machine is Korean, or just "not UTF-8".
         
-        // For the purpose of this test, we want to ensure it is NOT detected as UTF-8.
-        utassert(codepage != CP_UTF8);
+        // Should detect as EUC-KR (949)
+        printf("EUC-KR test: Detected CP%u (%s) with confidence %d\n", 
+               codepage, res.encodingName ? res.encodingName : "Unknown", (int)res.confidence);
+        utassert(codepage == 949);
+    }
+
+    // Test Shift-JIS detection
+    {
+        // "こんにちは" (Konnichiwa) in Shift-JIS
+        const char* shiftJisData = "\x82\xB1\x82\xF1\x82\xC9\x82\xBF\x82\xCD";
+        ByteSlice data((u8*)shiftJisData, strlen(shiftJisData));
+        EncodingResult res = EncodingDetector::DetectEncoding(data);
+        uint codepage = res.codepage;
         
-        // If we want to verify it detects 949 specifically, we might need to check if DetectEncoding
-        // has specific logic for 949.
-        // Looking at EncodingDetector.cpp, it doesn't seem to have specific CP949 detection logic 
-        // other than BOM or "IsLikelyASCII".
-        // It falls back to GetACP().
+        printf("Shift-JIS test: Detected CP%u (%s) with confidence %d\n", 
+               codepage, res.encodingName ? res.encodingName : "Unknown", (int)res.confidence);
+        utassert(codepage == 932);
+    }
+
+    // Test GB2312 detection
+    {
+        // "你好世界" (Hello World) in GB2312
+        const char* gb2312Data = "\xC4\xE3\xBA\xC3\xCA\xC0\xBD\xE7";
+        ByteSlice data((u8*)gb2312Data, strlen(gb2312Data));
+        EncodingResult res = EncodingDetector::DetectEncoding(data);
+        uint codepage = res.codepage;
         
-        // So we assert it returns GetACP() or 949.
-        uint acp = GetACP();
-        utassert(codepage == acp || codepage == 949);
+        printf("GB2312 test: Detected CP%u (%s) with confidence %d\n", 
+               codepage, res.encodingName ? res.encodingName : "Unknown", (int)res.confidence);
+        utassert(codepage == 936);
+    }
+
+    // Test Big5 detection
+    {
+        // "你好世界" (Hello World) in Big5
+        const char* big5Data = "\xA7\x41\xA6\x6E\xA5\x40\xAC\xC9";
+        ByteSlice data((u8*)big5Data, strlen(big5Data));
+        EncodingResult res = EncodingDetector::DetectEncoding(data);
+        uint codepage = res.codepage;
+        
+        printf("Big5 test: Detected CP%u (%s) with confidence %d\n", 
+               codepage, res.encodingName ? res.encodingName : "Unknown", (int)res.confidence);
+        utassert(codepage == 950);
     }
 
     // Test ASCII detection
@@ -55,4 +80,7 @@ void EncodingDetector_UnitTests() {
         }
         utassert(codepage == CP_UTF8 || codepage == 1252 || codepage == 437 || codepage == 20127);
     }
+
+    printf("\n=== All EncodingDetector tests passed! ===\n");
 }
+
