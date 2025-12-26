@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+﻿/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -474,6 +474,309 @@ bool EncodingDetector::IsLikelyBig5(const ByteSlice& data, float* scoreOut) {
     return (validRatio > 0.85f);
 }
 
+// Detect Central European Windows-1250 encoding
+bool EncodingDetector::IsLikelyCentralEuropean(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t centralEuropeanChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Common Central European characters in Windows-1250
+            // Polish, Czech, Hungarian specific bytes
+            if (byte == 0xB9 || byte == 0xE6 || byte == 0xEA || byte == 0xB3 || 
+                byte == 0xF1 || byte == 0xF3 || byte == 0x9C || byte == 0x9F || 
+                byte == 0xBF || byte == 0x8C || byte == 0x8F || byte == 0x9A || 
+                byte == 0x9D || byte == 0x9E || byte == 0xD5 || byte == 0xDB) {
+                centralEuropeanChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)centralEuropeanChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.2f && highBytes * 100 / len > 5);
+}
+
+// Detect Cyrillic Windows-1251 encoding
+bool EncodingDetector::IsLikelyCyrillic(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t cyrillicChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Cyrillic range in Windows-1251: 0xC0-0xFF
+            if ((byte >= 0xC0 && byte <= 0xFF) || byte == 0xA8 || byte == 0xB8 || 
+                byte == 0xAA || byte == 0xBA || byte == 0xAF || byte == 0xBF) {
+                cyrillicChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)cyrillicChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.6f && highBytes * 100 / len > 10);
+}
+
+// Detect Greek Windows-1253 encoding
+bool EncodingDetector::IsLikelyGreek(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t greekChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Greek range in Windows-1253: 0xC0-0xFE
+            if ((byte >= 0xC0 && byte <= 0xFE) || 
+                (byte >= 0xA1 && byte <= 0xA3) || 
+                (byte >= 0xB4 && byte <= 0xBE)) {
+                greekChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)greekChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.6f && highBytes * 100 / len > 10);
+}
+
+// Detect Turkish Windows-1254 encoding
+bool EncodingDetector::IsLikelyTurkish(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t turkishChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Turkish-specific characters
+            if (byte == 0xF0 || byte == 0xD0 || byte == 0xFD || byte == 0xDD ||
+                byte == 0xF6 || byte == 0xD6 || byte == 0xFE || byte == 0xDE ||
+                byte == 0xFC || byte == 0xDC || byte == 0xE7 || byte == 0xC7) {
+                turkishChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)turkishChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.15f && highBytes * 100 / len > 5);
+}
+
+// Detect Hebrew Windows-1255 encoding
+bool EncodingDetector::IsLikelyHebrew(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t hebrewChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Hebrew range in Windows-1255: 0xE0-0xFA
+            if (byte >= 0xE0 && byte <= 0xFA) {
+                hebrewChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)hebrewChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.6f && highBytes * 100 / len > 10);
+}
+
+// Detect Arabic Windows-1256 encoding
+bool EncodingDetector::IsLikelyArabic(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t arabicChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Arabic range in Windows-1256
+            if ((byte >= 0xC1 && byte <= 0xFE) || 
+                (byte >= 0x8C && byte <= 0x9F)) {
+                arabicChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)arabicChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.6f && highBytes * 100 / len > 10);
+}
+
+// Detect Baltic Windows-1257 encoding
+bool EncodingDetector::IsLikelyBaltic(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t balticChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Baltic-specific characters
+            if (byte == 0xE0 || byte == 0xE8 || byte == 0xEA || byte == 0xEB ||
+                byte == 0xEC || byte == 0xF0 || byte == 0xF8 || byte == 0xFE ||
+                byte == 0xC0 || byte == 0xC8 || byte == 0xCA || byte == 0xCB ||
+                byte == 0xCC || byte == 0xD0 || byte == 0xD8 || byte == 0xDE) {
+                balticChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)balticChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.2f && highBytes * 100 / len > 5);
+}
+
+// Detect Vietnamese Windows-1258 encoding
+bool EncodingDetector::IsLikelyVietnamese(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t highBytes = 0;
+    size_t vietnameseChars = 0;
+    
+    for (size_t i = 0; i < len; i++) {
+        u8 byte = d[i];
+        if (byte >= 0x80) {
+            highBytes++;
+            // Vietnamese tone marks
+            if ((byte >= 0xC0 && byte <= 0xC3) ||  // A with tones
+                (byte >= 0xC8 && byte <= 0xCA) ||  // E with tones
+                (byte >= 0xCC && byte <= 0xCD) ||  // I with tones
+                (byte >= 0xD2 && byte <= 0xD5) ||  // O with tones
+                (byte >= 0xD9 && byte <= 0xDA) ||  // U with tones
+                (byte >= 0xE0 && byte <= 0xE3) ||  // a with tones
+                (byte >= 0xE8 && byte <= 0xEA) ||  // e with tones
+                (byte >= 0xEC && byte <= 0xED) ||  // i with tones
+                (byte >= 0xF2 && byte <= 0xF5) ||  // o with tones
+                (byte >= 0xF9 && byte <= 0xFA) ||  // u with tones
+                byte == 0xD0 || byte == 0xF0) {    // D with stroke
+                vietnameseChars++;
+            }
+        }
+    }
+
+    if (highBytes == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float score = (float)vietnameseChars / highBytes;
+    if (scoreOut) *scoreOut = score;
+    
+    return (score > 0.3f && highBytes * 100 / len > 10);
+}
+
 EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
     // First check if it's valid UTF-8
     if (IsValidUTF8(data)) {
@@ -516,33 +819,102 @@ EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
     bool isGb2312 = IsLikelyGB2312(data, &gb2312Score);
     bool isBig5 = IsLikelyBig5(data, &big5Score);
 
+    // Try European/Middle Eastern encodings
+    float centralEuropeanScore = 0.0f;
+    float cyrillicScore = 0.0f;
+    float greekScore = 0.0f;
+    float turkishScore = 0.0f;
+    float hebrewScore = 0.0f;
+    float arabicScore = 0.0f;
+    float balticScore = 0.0f;
+    float vietnameseScore = 0.0f;
+
+    bool isCentralEuropean = IsLikelyCentralEuropean(data, &centralEuropeanScore);
+    bool isCyrillic = IsLikelyCyrillic(data, &cyrillicScore);
+    bool isGreek = IsLikelyGreek(data, &greekScore);
+    bool isTurkish = IsLikelyTurkish(data, &turkishScore);
+    bool isHebrew = IsLikelyHebrew(data, &hebrewScore);
+    bool isArabic = IsLikelyArabic(data, &arabicScore);
+    bool isBaltic = IsLikelyBaltic(data, &balticScore);
+    bool isVietnamese = IsLikelyVietnamese(data, &vietnameseScore);
+
     // Find the best match
     float maxScore = 0.0f;
     uint bestCodepage = 0;
     const char* bestName = nullptr;
 
+    // East Asian encodings
     if (isEucKr && eucKrScore > maxScore) {
         maxScore = eucKrScore;
-        bestCodepage = 949;  // EUC-KR / CP949
+        bestCodepage = 949;
         bestName = "EUC-KR";
     }
 
     if (isShiftJis && shiftJisScore > maxScore) {
         maxScore = shiftJisScore;
-        bestCodepage = 932;  // Shift-JIS
+        bestCodepage = 932;
         bestName = "Shift-JIS";
     }
 
     if (isGb2312 && gb2312Score > maxScore) {
         maxScore = gb2312Score;
-        bestCodepage = 936;  // GB2312 / GBK
+        bestCodepage = 936;
         bestName = "GB2312";
     }
 
     if (isBig5 && big5Score > maxScore) {
         maxScore = big5Score;
-        bestCodepage = 950;  // Big5
+        bestCodepage = 950;
         bestName = "Big5";
+    }
+
+    // European/Middle Eastern encodings
+    if (isCentralEuropean && centralEuropeanScore > maxScore) {
+        maxScore = centralEuropeanScore;
+        bestCodepage = 1250;
+        bestName = "Windows-1250";
+    }
+
+    if (isCyrillic && cyrillicScore > maxScore) {
+        maxScore = cyrillicScore;
+        bestCodepage = 1251;
+        bestName = "Windows-1251";
+    }
+
+    if (isGreek && greekScore > maxScore) {
+        maxScore = greekScore;
+        bestCodepage = 1253;
+        bestName = "Windows-1253";
+    }
+
+    if (isTurkish && turkishScore > maxScore) {
+        maxScore = turkishScore;
+        bestCodepage = 1254;
+        bestName = "Windows-1254";
+    }
+
+    if (isHebrew && hebrewScore > maxScore) {
+        maxScore = hebrewScore;
+        bestCodepage = 1255;
+        bestName = "Windows-1255";
+    }
+
+    if (isArabic && arabicScore > maxScore) {
+        maxScore = arabicScore;
+        bestCodepage = 1256;
+        bestName = "Windows-1256";
+    }
+
+    if (isBaltic && balticScore > maxScore) {
+        maxScore = balticScore;
+        bestCodepage = 1257;
+        bestName = "Windows-1257";
+    }
+
+    if (isVietnamese && vietnameseScore > maxScore) {
+        maxScore = vietnameseScore;
+        bestCodepage = 1258;
+        bestName = "Windows-1258";
     }
 
     // Return best match if found

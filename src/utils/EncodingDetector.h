@@ -63,4 +63,14 @@ class EncodingDetector {
     static bool IsLikelyShiftJIS(const ByteSlice& data, float* scoreOut = nullptr);
     static bool IsLikelyGB2312(const ByteSlice& data, float* scoreOut = nullptr);
     static bool IsLikelyBig5(const ByteSlice& data, float* scoreOut = nullptr);
+
+    // European/Middle Eastern encoding detection
+    static bool IsLikelyCentralEuropean(const ByteSlice& data, float* scoreOut = nullptr);  // Windows-1250
+    static bool IsLikelyCyrillic(const ByteSlice& data, float* scoreOut = nullptr);         // Windows-1251
+    static bool IsLikelyGreek(const ByteSlice& data, float* scoreOut = nullptr);            // Windows-1253
+    static bool IsLikelyTurkish(const ByteSlice& data, float* scoreOut = nullptr);          // Windows-1254
+    static bool IsLikelyHebrew(const ByteSlice& data, float* scoreOut = nullptr);           // Windows-1255
+    static bool IsLikelyArabic(const ByteSlice& data, float* scoreOut = nullptr);           // Windows-1256
+    static bool IsLikelyBaltic(const ByteSlice& data, float* scoreOut = nullptr);           // Windows-1257
+    static bool IsLikelyVietnamese(const ByteSlice& data, float* scoreOut = nullptr);       // Windows-1258
 };
