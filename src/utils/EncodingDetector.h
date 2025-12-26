@@ -57,4 +57,10 @@ class EncodingDetector {
 
     // Detect from XML processing instruction
     static EncodingResult DetectFromXMLPI(const ByteSlice& data);
+
+    // East Asian encoding detection
+    static bool IsLikelyEUCKR(const ByteSlice& data, float* scoreOut = nullptr);
+    static bool IsLikelyShiftJIS(const ByteSlice& data, float* scoreOut = nullptr);
+    static bool IsLikelyGB2312(const ByteSlice& data, float* scoreOut = nullptr);
+    static bool IsLikelyBig5(const ByteSlice& data, float* scoreOut = nullptr);
 };

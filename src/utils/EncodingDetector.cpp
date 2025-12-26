@@ -276,6 +276,204 @@ bool EncodingDetector::IsLikelyASCII(const ByteSlice& data) {
     return (nonAsciiCount * 100 / len) < 1;
 }
 
+// Helper: Check if byte is valid EUC-KR lead byte
+static bool IsEUCKRLead(u8 byte) {
+    return (byte >= 0xA1 && byte <= 0xFE);
+}
+
+// Helper: Check if byte is valid EUC-KR trail byte
+static bool IsEUCKRTrail(u8 byte) {
+    return (byte >= 0xA1 && byte <= 0xFE);
+}
+
+// Detect Korean EUC-KR encoding
+bool EncodingDetector::IsLikelyEUCKR(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t validPairs = 0;
+    size_t totalPairs = 0;
+    size_t koreanSyllables = 0;  // Hangul syllables (U+AC00 to U+D7A3)
+    
+    for (size_t i = 0; i < len - 1; i++) {
+        if (IsEUCKRLead(d[i])) {
+            totalPairs++;
+            if (IsEUCKRTrail(d[i + 1])) {
+                validPairs++;
+                
+                // Check for Hangul syllable range (0xB0A1-0xC8FE in EUC-KR)
+                if ((d[i] >= 0xB0 && d[i] <= 0xC8) && 
+                    (d[i + 1] >= 0xA1 && d[i + 1] <= 0xFE)) {
+                    koreanSyllables++;
+                }
+                i++;  // Skip the trail byte
+            }
+        }
+    }
+
+    if (totalPairs == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float validRatio = (float)validPairs / totalPairs;
+    float koreanRatio = (float)koreanSyllables / totalPairs;
+    float score = validRatio * 0.7f + koreanRatio * 0.3f;
+    
+    if (scoreOut) *scoreOut = score;
+    
+    // High confidence if >80% valid pairs and >30% Korean syllables
+    return (validRatio > 0.8f && koreanRatio > 0.3f);
+}
+
+// Detect Japanese Shift-JIS encoding
+bool EncodingDetector::IsLikelyShiftJIS(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t validPairs = 0;
+    size_t totalPairs = 0;
+    size_t hiraganaKatakana = 0;
+    
+    for (size_t i = 0; i < len - 1; i++) {
+        u8 lead = d[i];
+        
+        // Shift-JIS lead byte ranges: 0x81-0x9F, 0xE0-0xFC
+        if ((lead >= 0x81 && lead <= 0x9F) || (lead >= 0xE0 && lead <= 0xFC)) {
+            totalPairs++;
+            u8 trail = d[i + 1];
+            
+            // Shift-JIS trail byte ranges: 0x40-0x7E, 0x80-0xFC
+            if ((trail >= 0x40 && trail <= 0x7E) || (trail >= 0x80 && trail <= 0xFC)) {
+                validPairs++;
+                
+                // Hiragana: 0x829F-0x82F1, Katakana: 0x8340-0x8396
+                if ((lead == 0x82 && trail >= 0x9F) || 
+                    (lead == 0x83 && trail >= 0x40 && trail <= 0x96)) {
+                    hiraganaKatakana++;
+                }
+                i++;  // Skip the trail byte
+            }
+        }
+    }
+
+    if (totalPairs == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float validRatio = (float)validPairs / totalPairs;
+    float japaneseRatio = (float)hiraganaKatakana / totalPairs;
+    float score = validRatio * 0.7f + japaneseRatio * 0.3f;
+    
+    if (scoreOut) *scoreOut = score;
+    
+    // High confidence if >80% valid pairs and >20% Hiragana/Katakana
+    return (validRatio > 0.8f && japaneseRatio > 0.2f);
+}
+
+// Detect Chinese GB2312/GBK encoding
+bool EncodingDetector::IsLikelyGB2312(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t validPairs = 0;
+    size_t totalPairs = 0;
+    size_t chineseChars = 0;
+    
+    for (size_t i = 0; i < len - 1; i++) {
+        u8 lead = d[i];
+        
+        // GB2312 lead byte: 0xA1-0xFE
+        if (lead >= 0xA1 && lead <= 0xFE) {
+            totalPairs++;
+            u8 trail = d[i + 1];
+            
+            // GB2312 trail byte: 0xA1-0xFE
+            if (trail >= 0xA1 && trail <= 0xFE) {
+                validPairs++;
+                
+                // Common Chinese character range (U+4E00-U+9FA5: 0xB0A1-0xF7FE in GB2312)
+                if (lead >= 0xB0 && lead <= 0xF7) {
+                    chineseChars++;
+                }
+                i++;  // Skip the trail byte
+            }
+        }
+    }
+
+    if (totalPairs == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float validRatio = (float)validPairs / totalPairs;
+    float chineseRatio = (float)chineseChars / totalPairs;
+    float score = validRatio * 0.7f + chineseRatio * 0.3f;
+    
+    if (scoreOut) *scoreOut = score;
+    
+    // High confidence if >80% valid pairs and >40% Chinese characters
+    return (validRatio > 0.8f && chineseRatio > 0.4f);
+}
+
+// Detect Traditional Chinese Big5 encoding
+bool EncodingDetector::IsLikelyBig5(const ByteSlice& data, float* scoreOut) {
+    const u8* d = (const u8*)data.data();
+    size_t len = data.size();
+    
+    if (len < 10) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    size_t validPairs = 0;
+    size_t totalPairs = 0;
+    
+    for (size_t i = 0; i < len - 1; i++) {
+        u8 lead = d[i];
+        
+        // Big5 lead byte: 0x81-0xFE
+        if (lead >= 0x81 && lead <= 0xFE) {
+            totalPairs++;
+            u8 trail = d[i + 1];
+            
+            // Big5 trail byte: 0x40-0x7E, 0x80-0xFE
+            if ((trail >= 0x40 && trail <= 0x7E) || (trail >= 0x80 && trail <= 0xFE)) {
+                validPairs++;
+                i++;  // Skip the trail byte
+            }
+        }
+    }
+
+    if (totalPairs == 0) {
+        if (scoreOut) *scoreOut = 0.0f;
+        return false;
+    }
+
+    float validRatio = (float)validPairs / totalPairs;
+    
+    if (scoreOut) *scoreOut = validRatio;
+    
+    // High confidence if >85% valid pairs
+    return (validRatio > 0.85f);
+}
+
 EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
     // First check if it's valid UTF-8
     if (IsValidUTF8(data)) {
@@ -294,7 +492,6 @@ EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
 
     const u8* d = (const u8*)data.data();
 
-    // Simple heuristics for common encodings
     // Count high bytes (0x80-0xFF)
     size_t highByteCount = 0;
     for (size_t i = 0; i < sampleSize; i++) {
@@ -308,8 +505,58 @@ EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
         return EncodingResult(1252, EncodingConfidence::Low, "Windows-1252");
     }
 
-    // For now, return system default with low confidence
-    // TODO: Implement more sophisticated detection (frequency analysis, etc.)
+    // Try East Asian encodings with scoring
+    float eucKrScore = 0.0f;
+    float shiftJisScore = 0.0f;
+    float gb2312Score = 0.0f;
+    float big5Score = 0.0f;
+
+    bool isEucKr = IsLikelyEUCKR(data, &eucKrScore);
+    bool isShiftJis = IsLikelyShiftJIS(data, &shiftJisScore);
+    bool isGb2312 = IsLikelyGB2312(data, &gb2312Score);
+    bool isBig5 = IsLikelyBig5(data, &big5Score);
+
+    // Find the best match
+    float maxScore = 0.0f;
+    uint bestCodepage = 0;
+    const char* bestName = nullptr;
+
+    if (isEucKr && eucKrScore > maxScore) {
+        maxScore = eucKrScore;
+        bestCodepage = 949;  // EUC-KR / CP949
+        bestName = "EUC-KR";
+    }
+
+    if (isShiftJis && shiftJisScore > maxScore) {
+        maxScore = shiftJisScore;
+        bestCodepage = 932;  // Shift-JIS
+        bestName = "Shift-JIS";
+    }
+
+    if (isGb2312 && gb2312Score > maxScore) {
+        maxScore = gb2312Score;
+        bestCodepage = 936;  // GB2312 / GBK
+        bestName = "GB2312";
+    }
+
+    if (isBig5 && big5Score > maxScore) {
+        maxScore = big5Score;
+        bestCodepage = 950;  // Big5
+        bestName = "Big5";
+    }
+
+    // Return best match if found
+    if (bestCodepage != 0) {
+        EncodingConfidence conf = EncodingConfidence::Medium;
+        if (maxScore > 0.9f) {
+            conf = EncodingConfidence::High;
+        } else if (maxScore < 0.6f) {
+            conf = EncodingConfidence::Low;
+        }
+        return EncodingResult(bestCodepage, conf, bestName);
+    }
+
+    // Fallback to system default with low confidence
     uint defaultCP = GetACP();
     return EncodingResult(defaultCP, EncodingConfidence::Low, "System Default");
 }
