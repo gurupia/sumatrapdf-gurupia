@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -21,7 +21,7 @@
 #include "AppColors.h"
 #include "GlobalPrefs.h"
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "resource.h"
 #include "Commands.h"
@@ -87,15 +87,15 @@ struct AboutLayoutInfoEl {
 };
 
 static AboutLayoutInfoEl gAboutLayoutInfo[] = {
-    {"website", "SumatraPDF website", kWebsiteURL},
-    {"manual", "SumatraPDF manual", kManualURL},
-    {"forums", "SumatraPDF forums", "https://github.com/sumatrapdfreader/sumatrapdf/discussions"},
-    {"programming", "The Programmers", "https://github.com/sumatrapdfreader/sumatrapdf/blob/master/AUTHORS"},
-    {"translations", "The Translators", "https://github.com/sumatrapdfreader/sumatrapdf/blob/master/TRANSLATORS"},
-    {"licenses", "Various Open Source", "https://github.com/sumatrapdfreader/sumatrapdf/blob/master/AUTHORS"},
+    {"website", "GurupiaReader website", kWebsiteURL},
+    {"manual", "GurupiaReader manual", kManualURL},
+    {"forums", "GurupiaReader forums", "https://github.com/GurupiaReaderreader/GurupiaReader/discussions"},
+    {"programming", "The Programmers", "https://github.com/GurupiaReaderreader/GurupiaReader/blob/master/AUTHORS"},
+    {"translations", "The Translators", "https://github.com/GurupiaReaderreader/GurupiaReader/blob/master/TRANSLATORS"},
+    {"licenses", "Various Open Source", "https://github.com/GurupiaReaderreader/GurupiaReader/blob/master/AUTHORS"},
 #if defined(GIT_COMMIT_ID_STR)
     {"last change", "git commit " GIT_COMMIT_ID_STR,
-     "https://github.com/sumatrapdfreader/sumatrapdf/commit/" GIT_COMMIT_ID_STR},
+     "https://github.com/GurupiaReaderreader/GurupiaReader/commit/" GIT_COMMIT_ID_STR},
 #endif
 #if defined(PRE_RELEASE_VER)
     {"a note", "Pre-release version, for testing only!", nullptr},
@@ -135,7 +135,7 @@ static void DrawSumatraVersion(HDC hdc, Rect rect) {
     Size txtSize = HdcMeasureText(hdc, txt, fmt, fontSumatraTxt);
     Rect mainRect(rect.x + (rect.dx - txtSize.dx) / 2, rect.y + (rect.dy - txtSize.dy) / 2, txtSize.dx, txtSize.dy);
 
-    // draw SumatraPDF in colorful way
+    // draw GurupiaReader in colorful way
     Point pt = mainRect.TL();
     // colorful version
     static COLORREF cols[] = {kCol1, kCol2, kCol3, kCol4, kCol5, kCol5, kCol4, kCol3, kCol2, kCol1};
@@ -554,7 +554,7 @@ void ShowAboutWindow(MainWindow* win) {
         ReportIf(!gAtomAbout);
     }
 
-    TempWStr title = ToWStrTemp(_TRA("About SumatraPDF"));
+    TempWStr title = ToWStrTemp(_TRA("About GurupiaReader"));
     DWORD style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
     int x = CW_USEDEFAULT;
     int y = CW_USEDEFAULT;
@@ -645,7 +645,7 @@ struct HomePageLayout {
 
     Promote* promote = nullptr;
 
-    Rect rcAppWithVer; // SumatraPDF colorful text + version
+    Rect rcAppWithVer; // GurupiaReader colorful text + version
     Rect rcLine;       // line under bApp
     Rect rcIconOpen;
 

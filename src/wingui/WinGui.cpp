@@ -1,4 +1,4 @@
-/* Copyright 2024 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2024 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -1480,7 +1480,7 @@ void Tooltip::Update(int id, const char* s, const Rect& rc, bool multiline) {
 int Tooltip::SetSingle(const char* s, const Rect& rc, bool multiline) {
     if (str::Len(s) > 256) {
         // pathological cases make for tooltips that take too long to display
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/2814
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2814
         s = str::JoinTemp(str::DupTemp(s, 256), "...");
     }
     int n = Count();

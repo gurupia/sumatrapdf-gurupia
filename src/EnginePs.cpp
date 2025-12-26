@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -161,7 +161,7 @@ static EngineBase* ps2pdf(const char* path) {
     // So we removed use of -c .setpdfwrite completely. Not sure if there's an alternative
     // way to do it
     // https://github.com/GravityMedia/Ghostscript/issues/6
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1923
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1923
     TempStr cmdLine = str::FormatTemp(
         "\"%s\" -q -dSAFER -dNOPAUSE -dBATCH -dEPSCrop -sOutputFile=\"%s\" -sDEVICE=pdfwrite "
         "-f \"%s\"",
@@ -182,7 +182,7 @@ static EngineBase* ps2pdf(const char* path) {
     // TODO: should show a message box and do it in a background thread
     DWORD timeoutInMs = 40000;
     // allow to disable the timeout
-    if (GetEnvironmentVariable(L"SUMATRAPDF_NO_GHOSTSCRIPT_TIMEOUT", nullptr, 0)) {
+    if (GetEnvironmentVariable(L"GurupiaReader_NO_GHOSTSCRIPT_TIMEOUT", nullptr, 0)) {
         timeoutInMs = INFINITE;
     }
     DWORD exitCode = EXIT_FAILURE;

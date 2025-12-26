@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 extern "C" {
@@ -34,7 +34,7 @@ extern "C" {
 #include "Toolbar.h"
 #include "WindowTab.h"
 #include "EditAnnotations.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "Canvas.h"
 #include "Commands.h"
 #include "DarkModeSubclass.h"
@@ -876,7 +876,7 @@ static void UpdateUIForSelectedAnnotation(EditAnnotationsWindow* ew, Annotation*
     DisplayModel* dm = ew->tab->AsFixed();
     int nPages = dm->PageCount();
     if (annotPageNo > nPages) {
-        // see https://github.com/sumatrapdfreader/sumatrapdf/issues/1701
+        // see https://github.com/GurupiaReaderreader/GurupiaReader/issues/1701
         logf("UpdateUIForSelectedAnnotation: invalid annotPageNo (%d), should be <= than nPages (%d)\n", annotPageNo,
              nPages);
         ReportIf(annotPageNo > nPages);

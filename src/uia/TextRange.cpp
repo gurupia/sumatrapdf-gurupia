@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -20,14 +20,14 @@
 #include "uia/Provider.h"
 #include "TextSelection.h"
 
-SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document)
+ReaderUIAutomationTextRange::ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document)
     : refCount(1), document(document) {
     document->AddRef();
 
     SetToNullRange();
 }
 
-SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document, int pageNum)
+ReaderUIAutomationTextRange::ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document, int pageNum)
     : refCount(1), document(document) {
     document->AddRef();
 
@@ -37,7 +37,7 @@ SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(SumatraUIAutomationDo
     endGlyph = GetPageGlyphCount(pageNum);
 }
 
-SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document,
+ReaderUIAutomationTextRange::ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document,
                                                            TextSelection* range)
     : refCount(1), document(document) {
     document->AddRef();
@@ -49,7 +49,7 @@ SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(SumatraUIAutomationDo
     }
 }
 
-SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(const SumatraUIAutomationTextRange& b)
+ReaderUIAutomationTextRange::ReaderUIAutomationTextRange(const ReaderUIAutomationTextRange& b)
     : refCount(1), document(b.document) {
     document->AddRef();
 
@@ -59,38 +59,38 @@ SumatraUIAutomationTextRange::SumatraUIAutomationTextRange(const SumatraUIAutoma
     endGlyph = b.endGlyph;
 }
 
-SumatraUIAutomationTextRange::~SumatraUIAutomationTextRange() {
+ReaderUIAutomationTextRange::~ReaderUIAutomationTextRange() {
     document->Release();
 }
 
-bool SumatraUIAutomationTextRange::operator==(const SumatraUIAutomationTextRange& b) const {
+bool ReaderUIAutomationTextRange::operator==(const ReaderUIAutomationTextRange& b) const {
     return document == b.document && startPage == b.startPage && endPage == b.endPage && startGlyph == b.startGlyph &&
            endGlyph == b.endGlyph;
 }
 
-void SumatraUIAutomationTextRange::SetToDocumentRange() {
+void ReaderUIAutomationTextRange::SetToDocumentRange() {
     startPage = 1;
     startGlyph = 0;
     endPage = document->GetDM()->PageCount();
     endGlyph = GetPageGlyphCount(endPage);
 }
 
-void SumatraUIAutomationTextRange::SetToNullRange() {
+void ReaderUIAutomationTextRange::SetToNullRange() {
     startPage = -1;
     startGlyph = 0;
     endPage = -1;
     endGlyph = 0;
 }
 
-bool SumatraUIAutomationTextRange::IsNullRange() const {
+bool ReaderUIAutomationTextRange::IsNullRange() const {
     return (startPage == -1 && endPage == -1);
 }
 
-bool SumatraUIAutomationTextRange::IsEmptyRange() const {
+bool ReaderUIAutomationTextRange::IsEmptyRange() const {
     return (startPage == endPage && startGlyph == endGlyph);
 }
 
-int SumatraUIAutomationTextRange::GetPageGlyphCount(int pageNum) {
+int ReaderUIAutomationTextRange::GetPageGlyphCount(int pageNum) {
     ReportIf(!document->IsDocumentLoaded());
     ReportIf(pageNum <= 0);
 
@@ -99,13 +99,13 @@ int SumatraUIAutomationTextRange::GetPageGlyphCount(int pageNum) {
     return pageLen;
 }
 
-int SumatraUIAutomationTextRange::GetPageCount() {
+int ReaderUIAutomationTextRange::GetPageCount() {
     ReportIf(!document->IsDocumentLoaded());
 
     return document->GetDM()->PageCount();
 }
 
-void SumatraUIAutomationTextRange::ValidateStartEndpoint() {
+void ReaderUIAutomationTextRange::ValidateStartEndpoint() {
     // ensure correct ordering of endpoints
     if (startPage > endPage || (startPage == endPage && startGlyph > endGlyph)) {
         startPage = endPage;
@@ -113,7 +113,7 @@ void SumatraUIAutomationTextRange::ValidateStartEndpoint() {
     }
 }
 
-void SumatraUIAutomationTextRange::ValidateEndEndpoint() {
+void ReaderUIAutomationTextRange::ValidateEndEndpoint() {
     // ensure correct ordering of endpoints
     if (startPage > endPage || (startPage == endPage && startGlyph > endGlyph)) {
         endPage = startPage;
@@ -121,7 +121,7 @@ void SumatraUIAutomationTextRange::ValidateEndEndpoint() {
     }
 }
 
-int SumatraUIAutomationTextRange::FindPreviousWordEndpoint(int pageno, int idx, bool dontReturnInitial) {
+int ReaderUIAutomationTextRange::FindPreviousWordEndpoint(int pageno, int idx, bool dontReturnInitial) {
     // based on TextSelection::SelectWordAt
     int textLen;
     auto cache = document->GetDM()->textCache;
@@ -143,7 +143,7 @@ int SumatraUIAutomationTextRange::FindPreviousWordEndpoint(int pageno, int idx, 
     return idx;
 }
 
-int SumatraUIAutomationTextRange::FindNextWordEndpoint(int pageno, int idx, bool dontReturnInitial) {
+int ReaderUIAutomationTextRange::FindNextWordEndpoint(int pageno, int idx, bool dontReturnInitial) {
     int textLen;
     auto cache = document->GetDM()->textCache;
     const WCHAR* pageText = cache->GetTextForPage(pageno, &textLen);
@@ -164,7 +164,7 @@ int SumatraUIAutomationTextRange::FindNextWordEndpoint(int pageno, int idx, bool
     return idx;
 }
 
-int SumatraUIAutomationTextRange::FindPreviousLineEndpoint(int pageno, int idx, bool dontReturnInitial) {
+int ReaderUIAutomationTextRange::FindPreviousLineEndpoint(int pageno, int idx, bool dontReturnInitial) {
     int textLen;
     auto cache = document->GetDM()->textCache;
     const WCHAR* pageText = cache->GetTextForPage(pageno, &textLen);
@@ -185,7 +185,7 @@ int SumatraUIAutomationTextRange::FindPreviousLineEndpoint(int pageno, int idx, 
     return idx;
 }
 
-int SumatraUIAutomationTextRange::FindNextLineEndpoint(int pageno, int idx, bool dontReturnInitial) {
+int ReaderUIAutomationTextRange::FindNextLineEndpoint(int pageno, int idx, bool dontReturnInitial) {
     int textLen;
     auto cache = document->GetDM()->textCache;
     const WCHAR* pageText = cache->GetTextForPage(pageno, &textLen);
@@ -207,16 +207,16 @@ int SumatraUIAutomationTextRange::FindNextLineEndpoint(int pageno, int idx, bool
 }
 
 // IUnknown
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::QueryInterface(REFIID riid, void** ppv) {
-    static const QITAB qit[] = {QITABENT(SumatraUIAutomationTextRange, ITextRangeProvider), {nullptr}};
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::QueryInterface(REFIID riid, void** ppv) {
+    static const QITAB qit[] = {QITABENT(ReaderUIAutomationTextRange, ITextRangeProvider), {nullptr}};
     return QISearch(this, qit, riid, ppv);
 }
 
-ULONG STDMETHODCALLTYPE SumatraUIAutomationTextRange::AddRef() {
+ULONG STDMETHODCALLTYPE ReaderUIAutomationTextRange::AddRef() {
     return InterlockedIncrement(&refCount);
 }
 
-ULONG STDMETHODCALLTYPE SumatraUIAutomationTextRange::Release() {
+ULONG STDMETHODCALLTYPE ReaderUIAutomationTextRange::Release() {
     LONG res = InterlockedDecrement(&refCount);
     ReportIf(res < 0);
     if (0 == res) {
@@ -225,23 +225,23 @@ ULONG STDMETHODCALLTYPE SumatraUIAutomationTextRange::Release() {
     return res;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Clone(ITextRangeProvider** clonedRange) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::Clone(ITextRangeProvider** clonedRange) {
     if (clonedRange == nullptr) {
         return E_POINTER;
     }
-    *clonedRange = new SumatraUIAutomationTextRange(*this);
+    *clonedRange = new ReaderUIAutomationTextRange(*this);
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Compare(ITextRangeProvider* range, BOOL* areSame) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::Compare(ITextRangeProvider* range, BOOL* areSame) {
     if (areSame == nullptr) {
         return E_POINTER;
     }
     if (range == nullptr) {
         return E_POINTER;
     }
-    // TODO: is range guaranteed to be a SumatraUIAutomationTextRange?
-    if (*((SumatraUIAutomationTextRange*)range) == *this) {
+    // TODO: is range guaranteed to be a ReaderUIAutomationTextRange?
+    if (*((ReaderUIAutomationTextRange*)range) == *this) {
         *areSame = TRUE;
     } else {
         *areSame = FALSE;
@@ -249,7 +249,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Compare(ITextRangeProvid
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::CompareEndpoints(enum TextPatternRangeEndpoint srcEndPoint,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::CompareEndpoints(enum TextPatternRangeEndpoint srcEndPoint,
                                                                          ITextRangeProvider* range,
                                                                          enum TextPatternRangeEndpoint targetEndPoint,
                                                                          int* compValue) {
@@ -271,8 +271,8 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::CompareEndpoints(enum Te
         return E_INVALIDARG;
     }
 
-    // TODO: is range guaranteed to be a SumatraUIAutomationTextRange?
-    SumatraUIAutomationTextRange* target = (SumatraUIAutomationTextRange*)range;
+    // TODO: is range guaranteed to be a ReaderUIAutomationTextRange?
+    ReaderUIAutomationTextRange* target = (ReaderUIAutomationTextRange*)range;
 
     int comp_b_page, comp_b_idx;
     if (targetEndPoint == TextPatternRangeEndpoint_Start) {
@@ -295,7 +295,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::CompareEndpoints(enum Te
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::ExpandToEnclosingUnit(enum TextUnit textUnit) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::ExpandToEnclosingUnit(enum TextUnit textUnit) {
     // if document is closed, don't do anything
     if (!document->IsDocumentLoaded()) {
         return E_FAIL;
@@ -352,7 +352,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::ExpandToEnclosingUnit(en
     }
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::FindAttribute(__unused TEXTATTRIBUTEID attr,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::FindAttribute(__unused TEXTATTRIBUTEID attr,
                                                                       __unused VARIANT val, __unused BOOL backward,
                                                                       ITextRangeProvider** found) {
     if (found == nullptr) {
@@ -367,7 +367,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::FindAttribute(__unused T
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::FindText(__unused BSTR text, __unused BOOL backward,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::FindText(__unused BSTR text, __unused BOOL backward,
                                                                  __unused BOOL ignoreCase, ITextRangeProvider** found) {
     if (found == nullptr) {
         return E_POINTER;
@@ -380,7 +380,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::FindText(__unused BSTR t
     return E_NOTIMPL;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetAttributeValue(__unused TEXTATTRIBUTEID attr,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::GetAttributeValue(__unused TEXTATTRIBUTEID attr,
                                                                           VARIANT* value) {
     if (value == nullptr) {
         return E_POINTER;
@@ -401,7 +401,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetAttributeValue(__unus
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetBoundingRectangles(SAFEARRAY** boundingRects) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::GetBoundingRectangles(SAFEARRAY** boundingRects) {
     if (boundingRects == nullptr) {
         return E_POINTER;
     }
@@ -424,7 +424,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetBoundingRectangles(SA
 }
 
 HRESULT STDMETHODCALLTYPE
-SumatraUIAutomationTextRange::GetEnclosingElement(IRawElementProviderSimple** enclosingElement) {
+ReaderUIAutomationTextRange::GetEnclosingElement(IRawElementProviderSimple** enclosingElement) {
     if (enclosingElement == nullptr) {
         return E_POINTER;
     }
@@ -437,7 +437,7 @@ SumatraUIAutomationTextRange::GetEnclosingElement(IRawElementProviderSimple** en
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetText(int maxLength, BSTR* text) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::GetText(int maxLength, BSTR* text) {
     if (text == nullptr) {
         return E_POINTER;
     }
@@ -474,7 +474,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetText(int maxLength, B
     }
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Move(enum TextUnit unit, int count, int* moved) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::Move(enum TextUnit unit, int count, int* moved) {
     if (moved == nullptr) {
         return E_POINTER;
     }
@@ -519,7 +519,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Move(enum TextUnit unit,
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByUnit(TextPatternRangeEndpoint endpoint,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::MoveEndpointByUnit(TextPatternRangeEndpoint endpoint,
                                                                            TextUnit unit, int count, int* moved) {
     if (moved == nullptr) {
         return E_POINTER;
@@ -549,7 +549,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByUnit(TextP
 
     class EndPointMover {
       protected:
-        SumatraUIAutomationTextRange* target;
+        ReaderUIAutomationTextRange* target;
         int* target_page;
         int* target_glyph;
 
@@ -597,7 +597,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByUnit(TextP
         }
 
         // do the moving
-        int Move(int count, SumatraUIAutomationTextRange* target, int* target_page, int* target_glyph) {
+        int Move(int count, ReaderUIAutomationTextRange* target, int* target_page, int* target_glyph) {
             this->target = target;
             this->target_page = target_page;
             this->target_glyph = target_glyph;
@@ -721,15 +721,15 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByUnit(TextP
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByRange(TextPatternRangeEndpoint srcEndPoint,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::MoveEndpointByRange(TextPatternRangeEndpoint srcEndPoint,
                                                                             ITextRangeProvider* range,
                                                                             TextPatternRangeEndpoint targetEndPoint) {
     if (range == nullptr) {
         return E_POINTER;
     }
 
-    // TODO: is range guaranteed to be a SumatraUIAutomationTextRange?
-    SumatraUIAutomationTextRange* target = (SumatraUIAutomationTextRange*)range;
+    // TODO: is range guaranteed to be a ReaderUIAutomationTextRange?
+    ReaderUIAutomationTextRange* target = (ReaderUIAutomationTextRange*)range;
 
     // extract target location
     int target_page, target_idx;
@@ -763,7 +763,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::MoveEndpointByRange(Text
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Select() {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::Select() {
     if (!document->IsDocumentLoaded()) {
         return E_FAIL;
     }
@@ -779,15 +779,15 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::Select() {
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::AddToSelection() {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::AddToSelection() {
     return E_FAIL;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::RemoveFromSelection() {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::RemoveFromSelection() {
     return E_FAIL;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::ScrollIntoView(BOOL alignToTop) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::ScrollIntoView(BOOL alignToTop) {
     if (!document->IsDocumentLoaded()) {
         return E_FAIL;
     }
@@ -812,7 +812,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::ScrollIntoView(BOOL alig
     return E_NOTIMPL;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetChildren(SAFEARRAY** children) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationTextRange::GetChildren(SAFEARRAY** children) {
     if (children == nullptr) {
         return E_POINTER;
     }
@@ -836,7 +836,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationTextRange::GetChildren(SAFEARRAY** 
         return E_OUTOFMEMORY;
     }
 
-    SumatraUIAutomationPageProvider* it = document->GetFirstPage();
+    ReaderUIAutomationPageProvider* it = document->GetFirstPage();
     while (it) {
         if (it->GetPageNum() >= startPage || it->GetPageNum() <= endPage) {
             LONG index = it->GetPageNum() - startPage;

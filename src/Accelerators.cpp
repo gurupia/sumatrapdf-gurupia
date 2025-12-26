@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -316,7 +316,7 @@ again:
             return false;
         }
         WCHAR wc = *ws;
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4490
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4490
         // handle cyrrilic / hebrew keyboards where shortcut character
         // is unicode and needs to be translated to virtual char
         HKL kl = GetKeyboardLayout(0);
@@ -649,7 +649,7 @@ static bool IsSafeAccel(const ACCEL& a) {
 
     // whitelist Alt + Left, Alt + Right to enable document
     // navigation when focus is in edit or tree control
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/3688#issuecomment-1728271753
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/3688#issuecomment-1728271753
     if (a.fVirt == (FVIRTKEY | FALT)) {
         if ((k == VK_LEFT) || (k == VK_RIGHT)) {
             return true;
@@ -684,7 +684,7 @@ void CreateSumatraAcceleratorTable() {
         curr = curr->next;
     }
 
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/2981
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2981
     // sizeof(ACCEL) is 6 so odd number will cause treeViewAccels to
     // be mis-aligined. Rounding to 2 should be enoug, do 4 for extra safety
     nMax = RoundUp(nMax, 4);
@@ -711,7 +711,7 @@ void CreateSumatraAcceleratorTable() {
             treeViewAccels[nTreeViewAccels++] = accel;
         }
         if (((int)accel.cmd == (int)CmdToggleBookmarks) && !IsSafeAccel(accel)) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/2832
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2832
             treeViewAccels[nTreeViewAccels++] = accel;
         }
     };

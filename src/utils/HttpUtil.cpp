@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -11,7 +11,7 @@
 #include "utils/Log.h"
 
 // per RFC 1945 10.15 and 3.7, a user agent product token shouldn't contain whitespace
-constexpr const WCHAR* kUserAgent = L"SumatraPdfHTTP";
+constexpr const WCHAR* kUserAgent = L"GurupiaReaderHTTP";
 
 bool IsHttpRspOk(const HttpRsp* rsp) {
     if (rsp->error != ERROR_SUCCESS) {

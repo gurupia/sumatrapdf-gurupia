@@ -1,15 +1,15 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
-class SumatraUIAutomationProvider;
-class SumatraUIAutomationStartPageProvider : public IRawElementProviderFragment, public IRawElementProviderSimple {
+class ReaderUIAutomationProvider;
+class ReaderUIAutomationStartPageProvider : public IRawElementProviderFragment, public IRawElementProviderSimple {
     LONG refCount;
     HWND canvasHwnd;
-    SumatraUIAutomationProvider* root;
+    ReaderUIAutomationProvider* root;
 
   public:
-    SumatraUIAutomationStartPageProvider(HWND canvasHwnd, SumatraUIAutomationProvider* root);
-    ~SumatraUIAutomationStartPageProvider();
+    ReaderUIAutomationStartPageProvider(HWND canvasHwnd, ReaderUIAutomationProvider* root);
+    ~ReaderUIAutomationStartPageProvider();
 
     // IUnknown
     HRESULT STDMETHODCALLTYPE QueryInterface(const IID&, void**);

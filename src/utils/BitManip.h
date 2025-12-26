@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 /* Simple functions to make it easier to set/clear/test for bits in integers */

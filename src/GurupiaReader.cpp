@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -54,7 +54,7 @@
 #include "TextSelection.h"
 #include "TextSearch.h"
 #include "AppColors.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "Notifications.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
@@ -93,17 +93,17 @@
 
 #include "utils/Log.h"
 
-constexpr const char* kRestrictionsFileName = "sumatrapdfrestrict.ini";
+constexpr const char* kRestrictionsFileName = "GurupiaReaderrestrict.ini";
 
-constexpr const char* kSumatraWindowTitle = "SumatraPDF";
-constexpr const WCHAR* kSumatraWindowTitleW = L"SumatraPDF";
+constexpr const char* kSumatraWindowTitle = "GurupiaReader";
+constexpr const WCHAR* kSumatraWindowTitleW = L"GurupiaReader";
 
 // used to show it in debug, but is not very useful,
 // so always disable
 bool gShowFrameRate = false;
 
 // in plugin mode, the window's frame isn't drawn and closing and
-// fullscreen are disabled, so that SumatraPDF can be displayed
+// fullscreen are disabled, so that GurupiaReader can be displayed
 // embedded (e.g. in a web browser)
 const char* gPluginURL = nullptr; // owned by Flags in WinMain
 
@@ -120,7 +120,7 @@ bool gSupressNextAltMenuTrigger = false;
 bool gCrashOnOpen = false;
 
 // in restricted mode, some features can be disabled (such as
-// opening files, printing, following URLs), so that SumatraPDF
+// opening files, printing, following URLs), so that GurupiaReader
 // can be used as a PDF reader on locked down systems
 static Perm gPolicyRestrictions = Perm::RestrictedUse;
 // only the listed protocols will be passed to the OS for
@@ -192,13 +192,13 @@ void InitializePolicies(bool restrict) {
     ReportIf(gPolicyRestrictions != Perm::RestrictedUse);
     ReportIf(gAllowedLinkProtocols.Size() != 0 || gAllowedFileTypes.Size() != 0);
 
-    // the -restrict command line flag overrides any sumatrapdfrestrict.ini configuration
+    // the -restrict command line flag overrides any GurupiaReaderrestrict.ini configuration
     if (restrict) {
         return;
     }
 
-    // allow to restrict SumatraPDF's functionality from an INI file in the
-    // same directory as SumatraPDF.exe (see ../docs/sumatrapdfrestrict.ini)
+    // allow to restrict GurupiaReader's functionality from an INI file in the
+    // same directory as GurupiaReader.exe (see ../docs/GurupiaReaderrestrict.ini)
     // (if the file isn't there, everything is allowed)
     TempStr restrictPath = GetPathInExeDirTemp(kRestrictionsFileName);
     if (!file::Exists(restrictPath)) {
@@ -222,7 +222,7 @@ void InitializePolicies(bool restrict) {
     static SeqStrings permNames =
         "InternetAccess\0DiskAccess\0SavePreferences\0RegistryAccess\0PrinterAccess\0CopySelection\0FullscreenAccess\0";
 
-    // enable policies as indicated in sumatrapdfrestrict.ini
+    // enable policies as indicated in GurupiaReaderrestrict.ini
     for (int i = 0; i < dimofi(perms); i++) {
         const char* name = seqstrings::IdxToStr(permNames, i);
         const char* val = polsec->GetValue(name);
@@ -997,7 +997,7 @@ static DocController* CreateControllerForChm(const char* path, PasswordUI* pwdUI
 // a sequence of DDE commands. Without this commands target
 // the tab by path and if there's more than one with the same
 // path, we pick the first one
-// https://github.com/sumatrapdfreader/sumatrapdf/issues/3903
+// https://github.com/GurupiaReaderreader/GurupiaReader/issues/3903
 DocController* gMostRecentlyOpenedDoc = nullptr;
 
 DocController* CreateControllerForEngineOrFile(EngineBase* engine, const char* path, PasswordUI* pwdUI,
@@ -1182,7 +1182,7 @@ static void ReplaceDocumentInCurrentTab(LoadArgs* args, DocController* ctrl, Fil
 
     // TODO: this crashes with new tabs
     // ReportIf(win->IsAboutWindow() || win->IsDocLoaded() != (win->ctrl != nullptr));
-    // TODO: https://code.google.com/p/sumatrapdf/issues/detail?id=1570
+    // TODO: https://code.google.com/p/GurupiaReader/issues/detail?id=1570
     if (win->ctrl) {
         DisplayModel* dm = win->AsFixed();
         if (dm) {
@@ -1284,7 +1284,7 @@ static void ReplaceDocumentInCurrentTab(LoadArgs* args, DocController* ctrl, Fil
 
     // if the window isn't shown and win.canvasRc is still empty, zoom
     // has not been determined yet
-    // cf. https://code.google.com/p/sumatrapdf/issues/detail?id=2541
+    // cf. https://code.google.com/p/GurupiaReader/issues/detail?id=2541
     // ReportIf(win->IsDocLoaded() && args->showWin && win->canvasRc.IsEmpty() && !win->AsChm());
 
     SetSidebarVisibility(win, showToc, gGlobalPrefs->showFavorites);
@@ -1679,7 +1679,7 @@ static void RenameFileInHistory(const char* oldPath, const char* newPath) {
 
 static void ReloadTab(WindowTab* tab) {
     // tab might have been closed, so first ensure it's still valid
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1958
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1958
     MainWindow* win = FindMainWindowByTab(tab);
     if (win == nullptr) {
         return;
@@ -1726,7 +1726,7 @@ static void LoadDocumentMarkNotExist(MainWindow* win, const char* path, bool noS
     if (!gFileHistory.MarkFileInexistent(path)) {
         return;
     }
-    // TODO: handle this better. see https://github.com/sumatrapdfreader/sumatrapdf/issues/1674
+    // TODO: handle this better. see https://github.com/GurupiaReaderreader/GurupiaReader/issues/1674
     if (!noSavePrefs) {
         SaveSettings();
     }
@@ -2365,7 +2365,7 @@ static void CloseDocumentInCurrentTab(MainWindow* win, bool keepUIEnabled, bool 
         ReportIf(win->TabCount() != 0 || win->CurrentTab());
     }
 
-    // Note: this causes https://code.google.com/p/sumatrapdf/issues/detail?id=2702. For whatever reason
+    // Note: this causes https://code.google.com/p/GurupiaReader/issues/detail?id=2702. For whatever reason
     // edit ctrl doesn't receive WM_KILLFOCUS if we do SetFocus() here, even if we call SetFocus() later on
     // HwndSetFocus(win->hwndFrame);
 }
@@ -4654,7 +4654,7 @@ static TempStr URLEncodeMayTruncateTemp(const char* s) {
 constexpr const char* kUserLangStr = "${userlang}";
 constexpr const char* kSelectionStr = "${selection}";
 
-// https://github.com/sumatrapdfreader/sumatrapdf/issues/4368
+// https://github.com/GurupiaReaderreader/GurupiaReader/issues/4368
 // for Google translate tl= arg seems to be ISO-639 lang code
 // and we seem to use ISO-3166 country code
 // this translates between them but is a heuristic that might be wrong
@@ -4752,7 +4752,7 @@ TempStr GetNotImportantDataDirTemp() {
     if (!dir) {
         return nullptr;
     }
-    return path::JoinTemp(dir, "SumatraPDF-data");
+    return path::JoinTemp(dir, "GurupiaReader-data");
 }
 
 TempStr GetLogFilePathTemp() {
@@ -4968,7 +4968,7 @@ static bool ExtractFiles(lzma::SimpleArchive* archive, const char* destDir) {
     return true;
 }
 
-constexpr const char* kManualIndex = "SumatraPDF-documentation.html";
+constexpr const char* kManualIndex = "GurupiaReader-documentation.html";
 constexpr const char* kManualKeyboard = "Keyboard-shortcuts.html";
 
 static LoadedDataResource gManualArchiveData;
@@ -5034,7 +5034,7 @@ OpenFileInBrowser:
         if (!gManualBrowserWindow) {
             // try to launch in our window
             SimpleBrowserCreateArgs args;
-            args.title = "SumatraPDF Documentation";
+            args.title = "GurupiaReader Documentation";
             args.url = url;
             // TODO: dataDir
             gManualBrowserWindow = SimpleBrowserWindowCreate(args);
@@ -6343,7 +6343,7 @@ void GetProgramInfo(str::Str& s) {
     s.Append("\r\n");
 
     if (gitCommidId != nullptr) {
-        s.AppendFmt("Git: %s (https://github.com/sumatrapdfreader/sumatrapdf/commit/%s)\r\n", gitCommidId, gitCommidId);
+        s.AppendFmt("Git: %s (https://github.com/GurupiaReaderreader/GurupiaReader/commit/%s)\r\n", gitCommidId, gitCommidId);
     }
 }
 
@@ -6363,17 +6363,17 @@ void ShowCrashHandlerMessage() {
     }
 
 #if 0
-    int res = MsgBox(nullptr, _TRA("Sorry, that shouldn't have happened!\n\nPlease press 'Cancel', if you want to help us fix the cause of this crash."), _TRA("SumatraPDF crashed"), MB_ICONERROR | MB_OKCANCEL | MbRtlReadingMaybe());
+    int res = MsgBox(nullptr, _TRA("Sorry, that shouldn't have happened!\n\nPlease press 'Cancel', if you want to help us fix the cause of this crash."), _TRA("GurupiaReader crashed"), MB_ICONERROR | MB_OKCANCEL | MbRtlReadingMaybe());
     if (IDCANCEL == res) {
         LaunchBrowser(CRASH_REPORT_URL);
     }
 #endif
 
-    const char* msg = "We're sorry, SumatraPDF crashed.\n\nPress 'Cancel' to see crash report.";
+    const char* msg = "We're sorry, GurupiaReader crashed.\n\nPress 'Cancel' to see crash report.";
     uint flags = MB_ICONERROR | MB_OK | MB_OKCANCEL | MbRtlReadingMaybe();
     flags |= MB_SETFOREGROUND | MB_TOPMOST;
 
-    int res = MsgBox(nullptr, msg, "SumatraPDF crashed", flags);
+    int res = MsgBox(nullptr, msg, "GurupiaReader crashed", flags);
     if (IDCANCEL != res) {
         return;
     }
@@ -6382,7 +6382,7 @@ void ShowCrashHandlerMessage() {
         return;
     }
     LaunchFileIfExists(gCrashFilePath);
-    auto url = "https://www.sumatrapdfreader.org/docs/Submit-crash-report.html";
+    auto url = "https://www.GurupiaReaderreader.org/docs/Submit-crash-report.html";
     LaunchFileShell(url, nullptr, "open");
 }
 

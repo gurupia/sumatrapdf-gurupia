@@ -1,4 +1,4 @@
-/* Copyright 2024 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2024 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -76,7 +76,7 @@ static bool IsExeInProgramFiles() {
 
 /* Return false if this program has been started from "Program Files" directory
    (which is an indicator that it has been installed) or from the last known
-   location of a SumatraPDF installation: */
+   location of a GurupiaReader installation: */
 bool IsRunningInPortableMode() {
     // cache the result so that it will be consistent during the lifetime of the process
     static int sCacheIsPortable = -1; // -1 == uninitialized, 0 == installed, 1 == portable

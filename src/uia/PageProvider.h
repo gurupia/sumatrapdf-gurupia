@@ -1,34 +1,34 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 struct DisplayModel;
-class SumatraUIAutomationDocumentProvider;
-class SumatraUIAutomationPageProvider : public IRawElementProviderFragment,
+class ReaderUIAutomationDocumentProvider;
+class ReaderUIAutomationPageProvider : public IRawElementProviderFragment,
                                         public IRawElementProviderSimple,
                                         public IValueProvider {
     LONG refCount;
     int pageNum;
     HWND canvasHwnd;
     DisplayModel* dm;
-    SumatraUIAutomationDocumentProvider* root;
+    ReaderUIAutomationDocumentProvider* root;
 
-    SumatraUIAutomationPageProvider* sibling_prev;
-    SumatraUIAutomationPageProvider* sibling_next;
+    ReaderUIAutomationPageProvider* sibling_prev;
+    ReaderUIAutomationPageProvider* sibling_next;
 
     // is dm released, and our root has released us.
     // Only UIA keeps us alive but we can't access anything
     bool released;
 
-    friend class SumatraUIAutomationDocumentProvider; // for setting up next/prev sibling
+    friend class ReaderUIAutomationDocumentProvider; // for setting up next/prev sibling
 
   public:
-    SumatraUIAutomationPageProvider(int pageNum, HWND canvasHwnd, DisplayModel* dm,
-                                    SumatraUIAutomationDocumentProvider* root);
-    ~SumatraUIAutomationPageProvider();
+    ReaderUIAutomationPageProvider(int pageNum, HWND canvasHwnd, DisplayModel* dm,
+                                    ReaderUIAutomationDocumentProvider* root);
+    ~ReaderUIAutomationPageProvider();
 
     int GetPageNum() const;
-    SumatraUIAutomationPageProvider* GetNextPage();
-    SumatraUIAutomationPageProvider* GetPreviousPage();
+    ReaderUIAutomationPageProvider* GetNextPage();
+    ReaderUIAutomationPageProvider* GetPreviousPage();
 
     // IUnknown
     HRESULT STDMETHODCALLTYPE QueryInterface(const IID&, void**);

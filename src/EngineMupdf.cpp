@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 extern "C" {
@@ -332,7 +332,7 @@ static WCHAR* PdfCleanStringInPlace(WCHAR* s) {
         if (c < 0x20) {
             *curr = ' ';
         } else if (c == 0xfffd) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/4965
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4965
             // TODO: was there mupdf change that caused this?
             *curr = 0;
             break;
@@ -467,7 +467,7 @@ static fz_stream* FzReadFileIfSmall(fz_context* ctx, const char* path) {
 }
 
 /*
-https://github.com/sumatrapdfreader/sumatrapdf/issues/4514
+https://github.com/GurupiaReaderreader/GurupiaReader/issues/4514
 Some PDF files have garbage at the beginning, before the %PDF- marker
 Sometimes removing this garbage fixes the file for mupdf
 */
@@ -678,7 +678,7 @@ static bool EndsURL(WCHAR c) {
     if (c == 0 || str::IsWs(c)) {
         return true;
     }
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1313
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1313
     // 0xff0c is ","
     if (c == (WCHAR)0xff0c) {
         return true;
@@ -1202,7 +1202,7 @@ static void FzFindImagePositions(fz_context* ctx, int pageNo, Vec<FitzPageImageI
         }
         image = block->u.i.image;
         if (image->colorspace != nullptr) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/1480
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1480
             // fz_convert_pixmap_samples doesn't handle src without colorspace
             // TODO: this is probably not right
             FitzPageImageInfo* img = new FitzPageImageInfo{block->bbox, block->u.i.transform};
@@ -1240,7 +1240,7 @@ static fz_image* FzFindImageAtIdx(fz_context* ctx, FzPageInfo* pageInfo, int idx
         }
         fz_image* image = block->u.i.image;
         if (image->colorspace != nullptr) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/1480
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1480
             // fz_convert_pixmap_samples doesn't handle src without colorspace
             // TODO: this is probably not right
             if (idx == 0) {
@@ -1262,7 +1262,7 @@ static fz_link* FixupPageLinks(fz_link* root) {
     // i.e. links that appear later in the list should be preferred
     // to links appearing before. Since we search from the start of
     // the (single-linked) list, we have to reverse the order of links
-    // (http://code.google.com/p/sumatrapdf/issues/detail?id=1303 )
+    // (http://code.google.com/p/GurupiaReader/issues/detail?id=1303 )
     fz_link* new_root = nullptr;
     while (root) {
         fz_link* tmp = root->next;
@@ -2024,7 +2024,7 @@ bool EngineMupdf::Load(IStream* stream, const char* nameHint, PasswordUI* pwdUI)
     return FinishLoading();
 }
 
-// is implemented in SumatraPDF.exe, PdfFilter and PdfPreview
+// is implemented in GurupiaReader.exe, PdfFilter and PdfPreview
 // TODO: allow setting per
 extern EBookUI* GetEBookUI();
 
@@ -2683,7 +2683,7 @@ static void RebuildCommentsFromAnnotationsInner(fz_context* ctx, pdf_annot* anno
         el->rect = ToRectF(rect);
 
         comments.Append(el);
-        // TODO: need to implement https://github.com/sumatrapdfreader/sumatrapdf/issues/1336
+        // TODO: need to implement https://github.com/GurupiaReaderreader/GurupiaReader/issues/1336
         // for saving the attachment to a file
         // TODO: expose /Contents in addition to the file path
         return;
@@ -2733,8 +2733,8 @@ static void RebuildCommentsFromAnnotations(fz_context* ctx, FzPageInfo* pageInfo
 
 // like GetFzPageInfo() but fails if we can't acquire locks
 // prevents blocking main thread due to render thread keeping the lock
-// https://github.com/sumatrapdfreader/sumatrapdf/issues/4145
-// https://github.com/sumatrapdfreader/sumatrapdf/issues/4187
+// https://github.com/GurupiaReaderreader/GurupiaReader/issues/4145
+// https://github.com/GurupiaReaderreader/GurupiaReader/issues/4187
 FzPageInfo* EngineMupdf::GetFzPageInfoCanFail(int pageNo) {
 #if 0
     return GetFzPageInfo(pageNo, true);
@@ -2753,7 +2753,7 @@ FzPageInfo* EngineMupdf::GetFzPageInfoCanFail(int pageNo) {
 #endif
 }
 
-/* SumatraPDF */
+/* GurupiaReader */
 fz_stext_page* fz_new_stext_page_from_page2(fz_context* ctx, fz_page* page, const fz_stext_options* options,
                                             fz_cookie* cookie) {
     fz_stext_page* text;
@@ -3805,7 +3805,7 @@ bool EngineMupdfHasUnsavedAnnotations(EngineBase* engine) {
         return false;
     }
 #if 0
-    // TODO: this fails in https://github.com/sumatrapdfreader/sumatrapdf/issues/3448
+    // TODO: this fails in https://github.com/GurupiaReaderreader/GurupiaReader/issues/3448
     // because pdf_has_unsaved_changes() returns true even though pdf_was_repaired()
     // returns false (even though the doc was modified in pdf_test_outline() becasue
     // "Bad or missing last pointer in outline tree, repairing"

@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "BaseUtil.h"
@@ -11,7 +11,7 @@
 /*
 Implements extracting data from a simple archive format, made up by me.
 For the description of the format, see comment below, above ParseSimpleArchive().
-Archives are simple to create (in SumatraPDF, we used to use lzma.exe and a python script)
+Archives are simple to create (in GurupiaReader, we used to use lzma.exe and a python script)
 there's a tool for creating them in ../MakeLzSA.cpp
 */
 

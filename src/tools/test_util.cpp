@@ -8,7 +8,7 @@
 extern void BaseUtils_UnitTests();
 
 // in src/UnitTests.cpp
-extern void SumatraPDF_UnitTests();
+extern void GurupiaReader_UnitTests();
 
 extern void BaseUtilTest();
 extern void ByteOrderTests();
@@ -52,7 +52,7 @@ int main(int, char**) {
     TrivialHtmlParser_UnitTests();
     VecTest();
     WinUtilTest();
-    SumatraPDF_UnitTests();
+    GurupiaReader_UnitTests();
 
     int res = utassert_print_results();
     DestroyTempAllocator();

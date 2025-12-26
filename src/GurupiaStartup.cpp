@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -39,7 +39,7 @@
 #include "TextSelection.h"
 #include "TextSearch.h"
 #include "Notifications.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
 #include "UpdateCheck.h"
@@ -348,7 +348,7 @@ static bool SetupPluginMode(Flags& i) {
     // don't save preferences for plugin windows (and don't allow fullscreen mode)
     // TODO: Perm::DiskAccess is required for saving viewed files and printing and
     //       Perm::InternetAccess is required for crash reports
-    // (they can still be disabled through sumatrapdfrestrict.ini or -restrict)
+    // (they can still be disabled through GurupiaReaderrestrict.ini or -restrict)
     RestrictPolicies(Perm::SavePreferences | Perm::FullscreenAccess);
 
     i.reuseDdeInstance = i.exitWhenDone = false;
@@ -396,8 +396,8 @@ static bool SetupPluginMode(Flags& i) {
 
 static void SetupCrashHandler() {
     TempStr symDir = GetCrashInfoDirTemp();
-    TempStr crashDumpPath = path::JoinTemp(symDir, "sumatrapdfcrash.dmp");
-    TempStr crashFilePath = path::JoinTemp(symDir, "sumatrapdfcrash.txt");
+    TempStr crashDumpPath = path::JoinTemp(symDir, "GurupiaReadercrash.dmp");
+    TempStr crashFilePath = path::JoinTemp(symDir, "GurupiaReadercrash.txt");
     InstallCrashHandler(crashDumpPath, crashFilePath, symDir);
 }
 
@@ -407,7 +407,7 @@ static HWND FindPrevInstWindow(HANDLE* hMutex) {
     TempStr exePath = GetSelfExePathTemp();
     str::ToLowerInPlace(exePath);
     u32 hash = MurmurHash2(exePath, str::Len(exePath));
-    TempStr mapId = str::FormatTemp("SumatraPDF-%08x", hash);
+    TempStr mapId = str::FormatTemp("GurupiaReader-%08x", hash);
 
     int retriesLeft = 3;
     HANDLE hMap = nullptr;
@@ -602,7 +602,7 @@ static void UpdateGlobalPrefs(const Flags& i) {
 }
 
 // we're in installer mode if the name of the executable
-// has "install" string in it e.g. SumatraPDF-installer.exe
+// has "install" string in it e.g. GurupiaReader-installer.exe
 static bool ExeHasNameOfInstaller() {
     TempStr exePath = GetSelfExePathTemp();
     TempStr exeName = path::GetBaseNameTemp(exePath);
@@ -703,12 +703,12 @@ static bool ForceRunningAsInstaller() {
     }
 
     constexpr const char* corruptedInstallationConsole = R"(
-Looks like corrupted installation of SumatraPDF.
+Looks like corrupted installation of GurupiaReader.
 
-Learn more at https://www.sumatrapdfreader.org/docs/Corrupted-installation
+Learn more at https://www.GurupiaReaderreader.org/docs/Corrupted-installation
 )";
     constexpr const char* corruptedInstallation =
-        R"(Looks like corrupted installation of SumatraPDF.
+        R"(Looks like corrupted installation of GurupiaReader.
 )";
     bool ok = RedirectIOToExistingConsole();
     if (ok) {
@@ -716,7 +716,7 @@ Learn more at https://www.sumatrapdfreader.org/docs/Corrupted-installation
         printf("%s", corruptedInstallationConsole);
     }
 
-    auto title = L"SumatraPDF installer";
+    auto title = L"GurupiaReader installer";
     TASKDIALOGCONFIG dialogConfig{};
 
     DWORD flags =
@@ -728,7 +728,7 @@ Learn more at https://www.sumatrapdfreader.org/docs/Corrupted-installation
     dialogConfig.pszWindowTitle = title;
     dialogConfig.pszMainInstruction = ToWStrTemp(corruptedInstallation);
     dialogConfig.pszContent =
-        LR"(Learn more at <a href="https://www.sumatrapdfreader.org/docs/Corrupted-installation">www.sumatrapdfreader.org/docs/Corrupted-installation</a>.)";
+        LR"(Learn more at <a href="https://www.GurupiaReaderreader.org/docs/Corrupted-installation">www.GurupiaReaderreader.org/docs/Corrupted-installation</a>.)";
     dialogConfig.nDefaultButton = IDOK;
     dialogConfig.dwFlags = flags;
     dialogConfig.cxWidth = 0;
@@ -765,11 +765,11 @@ static void ShowInstallerHelp() {
     bool ok = RedirectIOToExistingConsole();
     if (ok) {
         // if we're launched from console, print help to consle window
-        printf("%s\n%s\n", msg, "See more at https://www.sumatrapdfreader.org/docs/Installer-cmd-line-arguments");
+        printf("%s\n%s\n", msg, "See more at https://www.GurupiaReaderreader.org/docs/Installer-cmd-line-arguments");
         return;
     }
 
-    const WCHAR* title = L"SumatraPDF installer usage";
+    const WCHAR* title = L"GurupiaReader installer usage";
     TASKDIALOGCONFIG dialogConfig{};
 
     DWORD flags =
@@ -781,7 +781,7 @@ static void ShowInstallerHelp() {
     dialogConfig.pszWindowTitle = title;
     dialogConfig.pszMainInstruction = ToWStrTemp(msg);
     dialogConfig.pszContent =
-        LR"(<a href="https://www.sumatrapdfreader.org/docs/Installer-cmd-line-arguments">Read more on website</a>)";
+        LR"(<a href="https://www.GurupiaReaderreader.org/docs/Installer-cmd-line-arguments">Read more on website</a>)";
     dialogConfig.nDefaultButton = IDOK;
     dialogConfig.dwFlags = flags;
     dialogConfig.pfCallback = TaskdialogHandleLinkscallback;
@@ -825,11 +825,11 @@ static void ShowNoAdminErrorMessage() {
     DWORD flags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_POSITION_RELATIVE_TO_WINDOW | TDF_ENABLE_HYPERLINKS;
     dialogConfig.cbSize = sizeof(TASKDIALOGCONFIG);
     dialogConfig.cxWidth = 340;
-    dialogConfig.pszWindowTitle = L"SumatraPDF";
-    dialogConfig.pszMainInstruction = L"SumatraPDF is running as admin and cannot open files from a non-admin process";
+    dialogConfig.pszWindowTitle = L"GurupiaReader";
+    dialogConfig.pszMainInstruction = L"GurupiaReader is running as admin and cannot open files from a non-admin process";
     ;
     dialogConfig.pszContent =
-        LR"(<a href="https://github.com/sumatrapdfreader/sumatrapdf/discussions/2316">Read more about this error</a>)";
+        LR"(<a href="https://github.com/GurupiaReaderreader/GurupiaReader/discussions/2316">Read more about this error</a>)";
     dialogConfig.nDefaultButton = IDOK;
     dialogConfig.dwFlags = flags;
     dialogConfig.pfCallback = TaskdialogHandleLinkscallback;
@@ -1035,7 +1035,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
     if (flags.justExtractFiles) {
         RedirectIOToExistingConsole();
         if (!ExeHasInstallerResources()) {
-            log("this is not a SumatraPDF installer, -x option not available\n");
+            log("this is not a GurupiaReader installer, -x option not available\n");
             HandleRedirectedConsoleOnShutdown();
             return 1;
         }
@@ -1241,13 +1241,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
             OpenUsingDDE(existingHwnd, path, flags, isFirstWindow);
         }
         if (0 == nFiles) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/2306
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2306
             // if -new-window cmd-line flag given, create a new window
             // even if there are no files to open
             if (flags.inNewWindow) {
                 goto ContinueOpenWindow;
             } else {
-                // https://github.com/sumatrapdfreader/sumatrapdf/issues/3386
+                // https://github.com/GurupiaReaderreader/GurupiaReader/issues/3386
                 // e.g. when shift-click in taskbar, open a new window
                 SendMyselfDDE("[NewWindow]", existingHwnd);
                 goto Exit;
@@ -1265,7 +1265,7 @@ ContinueOpenWindow:
 
     restoreSession = gGlobalPrefs->restoreSession && (sessionData->size() > 0) && !gPluginMode;
     if (!gGlobalPrefs->useTabs && (existingInstanceHwnd != nullptr)) {
-        // do not restore a session if tabs are disabled and SumatraPDF is already running
+        // do not restore a session if tabs are disabled and GurupiaReader is already running
         // TODO: maybe disable restoring if tabs are disabled?
         restoreSession = false;
         logf("not restoring a session because the same exe is already running and tabs are disabled\n");

@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -14,7 +14,7 @@
 #include "EngineBase.h"
 #include "EngineAll.h"
 #include "GlobalPrefs.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "WindowTab.h"
 #include "ExternalViewers.h"
 #include "Commands.h"
@@ -381,7 +381,7 @@ static TempStr FormatParamTemp(char* arg, WindowTab* tab) {
     if (str::Find(arg, "%1")) {
         // TODO: if %1 is un-quoted, we should quote it but it's complicated because
         // it could be part of a pattern like %1.Page%p.txt
-        // (as in https://github.com/sumatrapdfreader/sumatrapdf/issues/3868)
+        // (as in https://github.com/GurupiaReaderreader/GurupiaReader/issues/3868)
         arg = str::ReplaceTemp(arg, "%1", path);
     }
     return (char*)arg;

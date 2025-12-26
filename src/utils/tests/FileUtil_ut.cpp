@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -8,15 +8,15 @@
 #include "utils/UtAssert.h"
 
 void FileUtilTest() {
-    const char* path1 = "C:\\Program Files\\SumatraPDF\\SumatraPDF.exe";
+    const char* path1 = "C:\\Program Files\\GurupiaReader\\GurupiaReader.exe";
 
     TempStr baseName = path::GetBaseNameTemp(path1);
-    utassert(str::Eq(baseName, "SumatraPDF.exe"));
+    utassert(str::Eq(baseName, "GurupiaReader.exe"));
 
     TempStr dirName = path::GetDirTemp(path1);
-    utassert(str::Eq(dirName, "C:\\Program Files\\SumatraPDF"));
+    utassert(str::Eq(dirName, "C:\\Program Files\\GurupiaReader"));
     baseName = path::GetBaseNameTemp(dirName);
-    utassert(str::Eq(baseName, "SumatraPDF"));
+    utassert(str::Eq(baseName, "GurupiaReader"));
 
     dirName = path::GetDirTemp("C:\\Program Files");
     utassert(str::Eq(dirName, "C:\\"));
@@ -33,8 +33,8 @@ void FileUtilTest() {
     char* path2 = path::Join("C:\\", "Program Files");
     utassert(str::Eq(path1, path2));
     free(path2);
-    path2 = path::Join(path1, "SumatraPDF");
-    utassert(str::Eq(path2, "C:\\Program Files\\SumatraPDF"));
+    path2 = path::Join(path1, "GurupiaReader");
+    utassert(str::Eq(path2, "C:\\Program Files\\GurupiaReader"));
     free(path2);
     path2 = path::Join("C:\\", "\\Windows");
     utassert(str::Eq(path2, "C:\\Windows"));

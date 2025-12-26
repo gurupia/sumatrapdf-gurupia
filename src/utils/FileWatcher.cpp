@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -457,7 +457,7 @@ WatchedFile* FileWatcherSubscribe(const char* path, const Func0& onFileChangedCb
         return nullptr;
     }
     if (false && IsProcess32()) {
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4111
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4111
         logf("FileWatcherSubscribe: not starting a file watcher thread due to 32-bit miscompilation\n");
         return nullptr;
     }

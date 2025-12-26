@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -56,7 +56,7 @@ bool gDisableDocumentRestrictions = false;
 bool gIsStoreBuild = false;
 
 int GetAppIconID() {
-    return IDI_SUMATRAPDF;
+    return IDI_GurupiaReader;
 }
 
 const char* GetCommitID() {

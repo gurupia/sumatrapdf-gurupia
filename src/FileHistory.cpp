@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
 License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -271,7 +271,7 @@ char* PopRecentlyClosedDocument() {
 
 static bool shouldDeleteThumbnail = false;
 
-// TODO: https://github.com/sumatrapdfreader/sumatrapdf/issues/4286
+// TODO: https://github.com/GurupiaReaderreader/GurupiaReader/issues/4286
 // Not sure why the behavior started changing after I re-wrote StrVec
 // is the issue that files are marked as isMissing in FileExistenceCheckerThread?
 // is it because we don't return enough itms if GetFrequencyOrder()? Is it a bug

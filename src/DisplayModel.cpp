@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 /* How to think of display logic: physical screen of size
@@ -57,7 +57,7 @@
 #include "EngineAll.h"
 #include "DisplayModel.h"
 #include "GlobalPrefs.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "PdfSync.h"
 #include "ProgressUpdateUI.h"
 #include "TextSelection.h"
@@ -961,7 +961,7 @@ int DisplayModel::GetPageNextToPoint(Point pt) const {
 }
 
 // TODO: try to track down why sometimes zoom on a page is 0
-// like https://github.com/sumatrapdfreader/sumatrapdf/issues/2014
+// like https://github.com/GurupiaReaderreader/GurupiaReader/issues/2014
 static float getZoomSafe(DisplayModel* dm, int pageNo, const PageInfo* pageInfo) {
     float zoom = pageInfo->zoomReal;
     if (zoom > 0) {

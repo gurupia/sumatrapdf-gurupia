@@ -1,28 +1,28 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 struct DisplayModel;
-class SumatraUIAutomationProvider;
-class SumatraUIAutomationPageProvider;
-class SumatraUIAutomationTextRange;
+class ReaderUIAutomationProvider;
+class ReaderUIAutomationPageProvider;
+class ReaderUIAutomationTextRange;
 
-class SumatraUIAutomationDocumentProvider : public IRawElementProviderFragment,
+class ReaderUIAutomationDocumentProvider : public IRawElementProviderFragment,
                                             public IRawElementProviderSimple,
                                             public ITextProvider,
                                             public IAccIdentity {
     LONG refCount;
     HWND canvasHwnd;
-    SumatraUIAutomationProvider* root;
+    ReaderUIAutomationProvider* root;
     bool released;
 
-    SumatraUIAutomationPageProvider* child_first;
-    SumatraUIAutomationPageProvider* child_last;
+    ReaderUIAutomationPageProvider* child_first;
+    ReaderUIAutomationPageProvider* child_last;
 
     DisplayModel* dm;
 
   public:
-    SumatraUIAutomationDocumentProvider(HWND canvasHwnd, SumatraUIAutomationProvider* root);
-    ~SumatraUIAutomationDocumentProvider();
+    ReaderUIAutomationDocumentProvider(HWND canvasHwnd, ReaderUIAutomationProvider* root);
+    ~ReaderUIAutomationDocumentProvider();
 
     // reads page count and creates a child element for each page
     void LoadDocument(DisplayModel* dm);
@@ -32,8 +32,8 @@ class SumatraUIAutomationDocumentProvider : public IRawElementProviderFragment,
     // GetDM() must not be called if IsDocumentLoaded()==FALSE
     DisplayModel* GetDM();
 
-    SumatraUIAutomationPageProvider* GetFirstPage();
-    SumatraUIAutomationPageProvider* GetLastPage();
+    ReaderUIAutomationPageProvider* GetFirstPage();
+    ReaderUIAutomationPageProvider* GetLastPage();
 
     // IUnknown
     HRESULT STDMETHODCALLTYPE QueryInterface(const IID&, void**);

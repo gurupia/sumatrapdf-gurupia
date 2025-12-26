@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include=".github">
@@ -234,7 +234,7 @@
     <ClInclude Include="..\src\SumatraDialogs.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SumatraPDF.h">
+    <ClInclude Include="..\src\GurupiaReader.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SumatraProperties.h">
@@ -467,6 +467,9 @@
     <ClCompile Include="..\src\MobiDoc.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\MuPDF_Exports.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\Notifications.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -515,7 +518,7 @@
     <ClCompile Include="..\src\SumatraDialogs.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\SumatraPDF.cpp">
+    <ClCompile Include="..\src\GurupiaReader.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\SumatraProperties.cpp">
@@ -785,7 +788,7 @@
     <None Include="..\docs\md\Configure-for-restricted-use.md">
       <Filter>docs\md</Filter>
     </None>
-    <None Include="..\docs\md\Contribute-to-SumatraPDF.md">
+    <None Include="..\docs\md\Contribute-to-GurupiaReader.md">
       <Filter>docs\md</Filter>
     </None>
     <None Include="..\docs\md\Contribute-translation.md">
@@ -857,13 +860,13 @@
     <None Include="..\docs\md\Submit-crash-report.md">
       <Filter>docs\md</Filter>
     </None>
-    <None Include="..\docs\md\SumatraPDF-documentation.md">
+    <None Include="..\docs\md\GurupiaReader-documentation.md">
       <Filter>docs\md</Filter>
     </None>
     <None Include="..\docs\md\Supported-document-formats.md">
       <Filter>docs\md</Filter>
     </None>
-    <None Include="..\docs\md\Uninstalling-SumatraPDF.md">
+    <None Include="..\docs\md\Uninstalling-GurupiaReader.md">
       <Filter>docs\md</Filter>
     </None>
     <None Include="..\docs\md\Update-check-doesnt-work.md">
@@ -907,7 +910,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\src\SumatraPDF.rc">
+    <ResourceCompile Include="..\src\GurupiaReader.rc">
       <Filter>src</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -10,12 +10,12 @@
 #include "uia/DocumentProvider.h"
 #include "uia/StartPageProvider.h"
 
-SumatraUIAutomationProvider::SumatraUIAutomationProvider(HWND hwnd)
+ReaderUIAutomationProvider::ReaderUIAutomationProvider(HWND hwnd)
     : refCount(1), canvasHwnd(hwnd), startpage(nullptr), document(nullptr) {
-    startpage = new SumatraUIAutomationStartPageProvider(hwnd, this);
+    startpage = new ReaderUIAutomationStartPageProvider(hwnd, this);
 }
 
-SumatraUIAutomationProvider::~SumatraUIAutomationProvider() {
+ReaderUIAutomationProvider::~ReaderUIAutomationProvider() {
     if (document) {
         document->FreeDocument(); // tell that the dm is now invalid
         document->Release();      // release our hooks
@@ -26,15 +26,15 @@ SumatraUIAutomationProvider::~SumatraUIAutomationProvider() {
     startpage = nullptr;
 }
 
-void SumatraUIAutomationProvider::OnDocumentLoad(DisplayModel* dm) {
+void ReaderUIAutomationProvider::OnDocumentLoad(DisplayModel* dm) {
     ReportIf(document);
 
-    document = new SumatraUIAutomationDocumentProvider(canvasHwnd, this);
+    document = new ReaderUIAutomationDocumentProvider(canvasHwnd, this);
     document->LoadDocument(dm);
     UiaRaiseStructureChangedEvent(this, StructureChangeType_ChildrenInvalidated, nullptr, 0);
 }
 
-void SumatraUIAutomationProvider::OnDocumentUnload() {
+void ReaderUIAutomationProvider::OnDocumentUnload() {
     if (document) {
         document->FreeDocument(); // tell that the dm is now invalid
         document->Release();      // release our hooks
@@ -43,25 +43,25 @@ void SumatraUIAutomationProvider::OnDocumentUnload() {
     }
 }
 
-void SumatraUIAutomationProvider::OnSelectionChanged() {
+void ReaderUIAutomationProvider::OnSelectionChanged() {
     if (document) {
         UiaRaiseAutomationEvent(document, UIA_Text_TextSelectionChangedEventId);
     }
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::QueryInterface(REFIID riid, void** ppv) {
-    static const QITAB qit[] = {QITABENT(SumatraUIAutomationProvider, IRawElementProviderSimple),
-                                QITABENT(SumatraUIAutomationProvider, IRawElementProviderFragment),
-                                QITABENT(SumatraUIAutomationProvider, IRawElementProviderFragmentRoot),
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::QueryInterface(REFIID riid, void** ppv) {
+    static const QITAB qit[] = {QITABENT(ReaderUIAutomationProvider, IRawElementProviderSimple),
+                                QITABENT(ReaderUIAutomationProvider, IRawElementProviderFragment),
+                                QITABENT(ReaderUIAutomationProvider, IRawElementProviderFragmentRoot),
                                 {nullptr}};
     return QISearch(this, qit, riid, ppv);
 }
 
-ULONG STDMETHODCALLTYPE SumatraUIAutomationProvider::AddRef() {
+ULONG STDMETHODCALLTYPE ReaderUIAutomationProvider::AddRef() {
     return InterlockedIncrement(&refCount);
 }
 
-ULONG STDMETHODCALLTYPE SumatraUIAutomationProvider::Release() {
+ULONG STDMETHODCALLTYPE ReaderUIAutomationProvider::Release() {
     LONG res = InterlockedDecrement(&refCount);
     ReportIf(res < 0);
     if (0 == res) {
@@ -70,13 +70,13 @@ ULONG STDMETHODCALLTYPE SumatraUIAutomationProvider::Release() {
     return res;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetPatternProvider(__unused PATTERNID patternId,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::GetPatternProvider(__unused PATTERNID patternId,
                                                                           IUnknown** pRetVal) {
     *pRetVal = nullptr;
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetPropertyValue(PROPERTYID propertyId, VARIANT* pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::GetPropertyValue(PROPERTYID propertyId, VARIANT* pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -103,11 +103,11 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetPropertyValue(PROPERTY
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_HostRawElementProvider(IRawElementProviderSimple** pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::get_HostRawElementProvider(IRawElementProviderSimple** pRetVal) {
     return UiaHostProviderFromHwnd(canvasHwnd, pRetVal);
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_ProviderOptions(ProviderOptions* pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::get_ProviderOptions(ProviderOptions* pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -115,7 +115,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_ProviderOptions(Provi
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::Navigate(enum NavigateDirection direction,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::Navigate(enum NavigateDirection direction,
                                                                 IRawElementProviderFragment** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
@@ -143,7 +143,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::Navigate(enum NavigateDir
     }
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetRuntimeId(SAFEARRAY** pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::GetRuntimeId(SAFEARRAY** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -153,7 +153,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetRuntimeId(SAFEARRAY** 
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetEmbeddedFragmentRoots(SAFEARRAY** pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::GetEmbeddedFragmentRoots(SAFEARRAY** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -163,11 +163,11 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetEmbeddedFragmentRoots(
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::SetFocus() {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::SetFocus() {
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_BoundingRectangle(struct UiaRect* pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::get_BoundingRectangle(struct UiaRect* pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -184,7 +184,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_BoundingRectangle(str
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_FragmentRoot(IRawElementProviderFragmentRoot** pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::get_FragmentRoot(IRawElementProviderFragmentRoot** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -194,7 +194,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::get_FragmentRoot(IRawElem
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::ElementProviderFromPoint(double x, double y,
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::ElementProviderFromPoint(double x, double y,
                                                                                 IRawElementProviderFragment** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
@@ -204,7 +204,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::ElementProviderFromPoint(
     return S_OK;
 }
 
-HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetFocus(IRawElementProviderFragment** pRetVal) {
+HRESULT STDMETHODCALLTYPE ReaderUIAutomationProvider::GetFocus(IRawElementProviderFragment** pRetVal) {
     if (pRetVal == nullptr) {
         return E_POINTER;
     }
@@ -221,7 +221,7 @@ HRESULT STDMETHODCALLTYPE SumatraUIAutomationProvider::GetFocus(IRawElementProvi
     return S_OK;
 }
 
-IRawElementProviderFragment* SumatraUIAutomationProvider::GetElementFromPoint(double x, double y,
+IRawElementProviderFragment* ReaderUIAutomationProvider::GetElementFromPoint(double x, double y,
                                                                               IRawElementProviderFragment* root) {
     if (!root) {
         return nullptr;

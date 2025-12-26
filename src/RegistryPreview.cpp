@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -58,7 +58,7 @@ bool InstallPreviewDll(const char* dllPath, bool allUsers) {
         const char* ext2 = prev.ext2;
         ok = true;
 
-        TempStr displayName = str::FormatTemp("SumatraPDF Preview (*%s)", ext);
+        TempStr displayName = str::FormatTemp("GurupiaReader Preview (*%s)", ext);
         // register class
         TempStr key = str::FormatTemp("Software\\Classes\\CLSID\\%s", clsid);
         ok &= LoggedWriteRegStr(hkey, key, nullptr, displayName);

@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -22,7 +22,7 @@
 #include "FileHistory.h"
 #include "GlobalPrefs.h"
 #include "ProgressUpdateUI.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "WindowTab.h"
 #include "ExternalViewers.h"
 #include "Flags.h"
@@ -41,7 +41,7 @@
 // if this flag is set, CloseWindow will not save prefs before closing the window.
 bool gDontSaveSettings = false;
 
-// SumatraPDF.cpp
+// GurupiaReader.cpp
 extern void RememberDefaultWindowPosition(MainWindow* win);
 
 static WatchedFile* gWatchedSettingsFile = nullptr;
@@ -78,7 +78,7 @@ static int cmpFloat(const void* a, const void* b) {
 }
 
 TempStr GetSettingsFileNameTemp() {
-    return str::DupTemp("SumatraPDF-settings.txt");
+    return str::DupTemp("GurupiaReader-settings.txt");
 }
 
 // this could be virtual path when running in app store
@@ -227,7 +227,7 @@ bool LoadSettings() {
     }
 
     // sanitize WindowMargin and PageSpacing values
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1899
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1899
     {
         auto&& m = gprefs->fixedPageUI.windowMargin;
         setMin(m.bottom, 0);
@@ -402,7 +402,7 @@ bool SaveSettings() {
     return ok;
 }
 
-// refresh the preferences when a different SumatraPDF process saves them
+// refresh the preferences when a different GurupiaReader process saves them
 // or if they are edited by the user using a text editor
 static void ReloadSettings() {
     TempStr settingsPath = GetSettingsPathTemp();

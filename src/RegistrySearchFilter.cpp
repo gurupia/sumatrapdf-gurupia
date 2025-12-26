@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -12,20 +12,20 @@ bool InstallSearchFilter(const char* dllPath, bool allUsers) {
     struct {
         const char *key, *value, *data;
     } regVals[] = {
-        {"Software\\Classes\\CLSID\\" kPdfFilterClsid, nullptr, "SumatraPDF IFilter"},
+        {"Software\\Classes\\CLSID\\" kPdfFilterClsid, nullptr, "GurupiaReader IFilter"},
         {"Software\\Classes\\CLSID\\" kPdfFilterClsid "\\InProcServer32", nullptr, dllPath},
         {"Software\\Classes\\CLSID\\" kPdfFilterClsid "\\InProcServer32", "ThreadingModel", "Both"},
-        {"Software\\Classes\\CLSID\\" kPdfFilterHandler, nullptr, "SumatraPDF IFilter Persistent Handler"},
+        {"Software\\Classes\\CLSID\\" kPdfFilterHandler, nullptr, "GurupiaReader IFilter Persistent Handler"},
         {"Software\\Classes\\CLSID\\" kPdfFilterHandler "\\PersistentAddinsRegistered", nullptr, ""},
         {"Software\\Classes\\CLSID"
          "\\" kPdfFilterHandler "\\PersistentAddinsRegistered\\{89BCB740-6119-101A-BCB7-00DD010655AF}",
          nullptr, kPdfFilterClsid},
         {"Software\\Classes\\.pdf\\PersistentHandler", nullptr, kPdfFilterHandler},
 #ifdef BUILD_TEX_IFILTER
-        {"Software\\Classes\\CLSID\\" kTexFilterClsid, nullptr, "SumatraPDF IFilter"},
+        {"Software\\Classes\\CLSID\\" kTexFilterClsid, nullptr, "GurupiaReader IFilter"},
         {"Software\\Classes\\CLSID\\" kTexFilterClsid "\\InProcServer32", nullptr, dllPath},
         {"Software\\Classes\\CLSID\\" kTexFilterClsid "\\InProcServer32", "ThreadingModel", "Both"},
-        {"Software\\Classes\\CLSID\\" kTexFilterHandler, nullptr, "SumatraPDF LaTeX IFilter Persistent Handler"},
+        {"Software\\Classes\\CLSID\\" kTexFilterHandler, nullptr, "GurupiaReader LaTeX IFilter Persistent Handler"},
         {"Software\\Classes\\CLSID\\" kTexFilterHandler "\\PersistentAddinsRegistered", nullptr, ""},
         {"Software\\Classes\\CLSID"
          "\\" kTexFilterHandler "\\PersistentAddinsRegistered\\{89BCB740-6119-101A-BCB7-00DD010655AF}",
@@ -33,10 +33,10 @@ bool InstallSearchFilter(const char* dllPath, bool allUsers) {
         {"Software\\Classes\\.tex\\PersistentHandler", nullptr, kTexFilterHandler},
 #endif
 #ifdef BUILD_EPUB_IFILTER
-        {"Software\\Classes\\CLSID\\" kEpubFilterClsid, nullptr, "SumatraPDF IFilter"},
+        {"Software\\Classes\\CLSID\\" kEpubFilterClsid, nullptr, "GurupiaReader IFilter"},
         {"Software\\Classes\\CLSID\\" kEpubFilterClsid "\\InProcServer32", nullptr, dllPath},
         {"Software\\Classes\\CLSID\\" kEpubFilterClsid "\\InProcServer32", "ThreadingModel", "Both"},
-        {"Software\\Classes\\CLSID\\" kEpubFilterHandler, nullptr, "SumatraPDF EPUB IFilter Persistent Handler"},
+        {"Software\\Classes\\CLSID\\" kEpubFilterHandler, nullptr, "GurupiaReader EPUB IFilter Persistent Handler"},
         {"Software\\Classes\\CLSID\\" kEpubFilterHandler "\\PersistentAddinsRegistered", nullptr, ""},
         {"Software\\Classes\\CLSID"
          "\\" kEpubFilterHandler "\\PersistentAddinsRegistered\\{89BCB740-6119-101A-BCB7-00DD010655AF}",

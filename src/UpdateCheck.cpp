@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -22,7 +22,7 @@
 #include "SumatraConfig.h"
 #include "Translations.h"
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "Flags.h"
 #include "ProgressUpdateUI.h"
 #include "Notifications.h"
@@ -34,26 +34,26 @@
 
 static const char* kNotifUpdateCheckInProgress = "notifUpdateCheckInProgress";
 
-// certificate on www.sumatrapdfreader.org is not supported by win7 and win8.1
+// certificate on www.GurupiaReaderreader.org is not supported by win7 and win8.1
 // (doesn't have the ciphers they understand)
 // so we first try sumatra-website.onrender.com which should work
 
-// https://kjk-files.s3.us-west-001.backblazeb2.com/software/sumatrapdf/sumpdf-prerelease-update.txt
+// https://kjk-files.s3.us-west-001.backblazeb2.com/software/GurupiaReader/sumpdf-prerelease-update.txt
 // clang-format off
 #if defined(PRE_RELEASE_VER) || defined(DEBUG)
-constexpr const char* kUpdateInfoURL = "https://www.sumatrapdfreader.org/updatecheck-pre-release.txt";
-constexpr const char* kUpdateInfoURL2 = "https://kjk-files.s3.us-west-001.backblazeb2.com/software/sumatrapdf/sumpdf-prerelease-update.txt";
+constexpr const char* kUpdateInfoURL = "https://www.GurupiaReaderreader.org/updatecheck-pre-release.txt";
+constexpr const char* kUpdateInfoURL2 = "https://kjk-files.s3.us-west-001.backblazeb2.com/software/GurupiaReader/sumpdf-prerelease-update.txt";
 #else
-constexpr const char* kUpdateInfoURL = "https://www.sumatrapdfreader.org/update-check-rel.txt";
+constexpr const char* kUpdateInfoURL = "https://www.GurupiaReaderreader.org/update-check-rel.txt";
 // Note: I don't have backup for this
-constexpr const char* kUpdateInfoURL2 = "https://www.sumatrapdfreader.org/update-check-rel.txt";
+constexpr const char* kUpdateInfoURL2 = "https://www.GurupiaReaderreader.org/update-check-rel.txt";
 #endif
 
 #ifndef kWebisteDownloadPageURL
 #if defined(PRE_RELEASE_VER)
-#define kWebisteDownloadPageURL "https://www.sumatrapdfreader.org/prerelease"
+#define kWebisteDownloadPageURL "https://www.GurupiaReaderreader.org/prerelease"
 #else
-#define kWebisteDownloadPageURL "https://www.sumatrapdfreader.org/download-free-pdf-viewer"
+#define kWebisteDownloadPageURL "https://www.GurupiaReaderreader.org/download-free-pdf-viewer"
 #endif
 #endif
 // clang-format on
@@ -92,20 +92,20 @@ struct UpdateInfo {
 /*
 The format of update information downloaded from the server:
 
-[SumatraPDF]
+[GurupiaReader]
 Latest: 14276
-Installer64: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel-64-install.exe
-Installer32: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel-install.exe
-PortableExe64: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel-64.exe
-PortableExe32: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel.exe
-PortableZip64: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel-64.zip
-PortableZip32: https://www.sumatrapdfreader.org/dl/prerel/14276/SumatraPDF-prerel.zip
+Installer64: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel-64-install.exe
+Installer32: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel-install.exe
+PortableExe64: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel-64.exe
+PortableExe32: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel.exe
+PortableZip64: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel-64.zip
+PortableZip32: https://www.GurupiaReaderreader.org/dl/prerel/14276/GurupiaReader-prerel.zip
 */
 static UpdateInfo* ParseUpdateInfo(const char* d) {
     // if a user configures os-wide proxy that is not a regular ie proxy
     // (which we pick up) we might get garbage http response
     // check if response looks valid
-    if (!str::StartsWith(d, '[' == d[0] ? "[SumatraPDF]" : "SumatraPDF")) {
+    if (!str::StartsWith(d, '[' == d[0] ? "[GurupiaReader]" : "GurupiaReader")) {
         return nullptr;
     }
 
@@ -114,7 +114,7 @@ static UpdateInfo* ParseUpdateInfo(const char* d) {
         return nullptr;
     }
     AutoDelete delRoot(root);
-    SquareTreeNode* node = root->GetChild("SumatraPDF");
+    SquareTreeNode* node = root->GetChild("GurupiaReader");
     if (!node) {
         return nullptr;
     }
@@ -222,7 +222,7 @@ static void NotifyUserOfUpdate(UpdateInfo* updateInfo) {
 
     constexpr int kBtnIdDontInstall = 100;
     constexpr int kBtnIdInstall = 101;
-    auto title = _TRA("SumatraPDF Update");
+    auto title = _TRA("GurupiaReader Update");
     TASKDIALOGCONFIG dialogConfig{};
     TASKDIALOG_BUTTON buttons[2];
 
@@ -439,7 +439,7 @@ static DWORD MaybeStartUpdateDownload(HWND hwndParent, HttpRsp* rsp, UpdateCheck
         if (updateCheckType == UpdateCheck::UserInitiated) {
             RemoveNotificationsForGroup(hwndForNotif, kNotifUpdateCheckInProgress);
             uint flags = MB_ICONINFORMATION | MB_OK | MB_SETFOREGROUND | MB_TOPMOST;
-            MsgBox(hwndParent, _TRA("You have the latest version."), _TRA("SumatraPDF Update"), flags);
+            MsgBox(hwndParent, _TRA("You have the latest version."), _TRA("GurupiaReader Update"), flags);
         }
         return 0;
     }
@@ -528,7 +528,7 @@ static void UpdateCheckFinish(UpdateCheckAsyncData* data) {
         RemoveNotificationsForGroup(win->hwndCanvas, kNotifUpdateCheckInProgress);
         // notify the user about network error during a manual update check
         TempStr msg = str::FormatTemp(_TRA("Can't connect to the Internet (error %#x)."), err);
-        MessageBoxWarning(hwnd, msg, _TRA("SumatraPDF Update"));
+        MessageBoxWarning(hwnd, msg, _TRA("GurupiaReader Update"));
     }
 }
 

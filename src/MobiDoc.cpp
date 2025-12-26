@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -517,7 +517,7 @@ bool MobiDoc::ParseHeader() {
     docRecCount = palmDocHdr.recordsCount;
     if (docRecCount == pdbReader->GetRecordCount()) {
         // catch the case where a broken document has an off-by-one error
-        // cf. https://code.google.com/p/sumatrapdf/issues/detail?id=2529
+        // cf. https://code.google.com/p/GurupiaReader/issues/detail?id=2529
         docRecCount--;
     }
     docUncompressedSize = palmDocHdr.uncompressedDocSize;
@@ -871,7 +871,7 @@ bool MobiDoc::LoadForPdbReader(PdbReader* pdbReader) {
         }
     }
 
-    // TODO: this is a heuristic for https://github.com/sumatrapdfreader/sumatrapdf/issues/1314
+    // TODO: this is a heuristic for https://github.com/GurupiaReaderreader/GurupiaReader/issues/1314
     // It has 29 records that fail to decompress because infinite recursion
     // is detected.
     // Figure out if this is a bug in my decoding.
@@ -880,7 +880,7 @@ bool MobiDoc::LoadForPdbReader(PdbReader* pdbReader) {
     }
 
     // replace unexpected \0 with spaces
-    // https://code.google.com/p/sumatrapdf/issues/detail?id=2529
+    // https://code.google.com/p/GurupiaReader/issues/detail?id=2529
     char* s = doc->Get();
     char* end = s + doc->size();
     while ((s = (char*)memchr(s, '\0', end - s)) != nullptr) {

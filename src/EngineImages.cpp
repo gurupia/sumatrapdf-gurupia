@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -1208,7 +1208,7 @@ bool EngineCbx::FinishLoading() {
 
     // not using the resolution of the contained images seems to be
     // expected, cf.
-    // https://web.archive.org/web/20140201010902/http://forums.fofou.org:80/sumatrapdf/topic?id=3183827&comments=5
+    // https://web.archive.org/web/20140201010902/http://forums.fofou.org:80/GurupiaReader/topic?id=3183827&comments=5
     // TODO: return DpiGetForHwnd(HWND_DESKTOP) instead?
     fileDPI = 96.f;
 

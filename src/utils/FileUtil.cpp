@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -246,7 +246,7 @@ static TempWStr NormalizeTemp(const WCHAR* path) {
     cch = GetLongPathNameW(fullPath, nullptr, 0);
     if (cch > 0) {
         // this sometimes fails for valid long paths
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4940
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4940
         normPath = AllocArrayTemp<WCHAR>(cch);
         GetLongPathNameW(fullPath, normPath, cch);
         if (cch <= MAX_PATH) {

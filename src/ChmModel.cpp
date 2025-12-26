@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -86,7 +86,7 @@ ChmModel::~ChmModel() {
     EnterCriticalSection(&docAccess);
     // TODO: deleting htmlWindow seems to spin a modal loop which
     //       can lead to WM_PAINT being dispatched for the parent
-    //       hwnd and then crashing in SumatraPDF.cpp's DrawDocument
+    //       hwnd and then crashing in GurupiaReader.cpp's DrawDocument
     delete htmlWindow;
     delete htmlWindowCb;
     delete doc;
@@ -699,8 +699,8 @@ void ChmThumbnailTask::OnDocumentComplete(const char* url) {
     logf("ChmThumbnailTask::OnDocumentComplete: '%s'\n", url);
     if (didSave) {
         // don't crash creating .chm thumbnail
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4519
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4833
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4519
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4833
         return;
     }
     didSave = true;

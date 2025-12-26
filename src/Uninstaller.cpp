@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 #include "utils/BaseUtil.h"
 #include "utils/FileUtil.h"
@@ -18,7 +18,7 @@
 #include "SumatraConfig.h"
 #include "Flags.h"
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "Installer.h"
 #include "AppTools.h"
 #include "Translations.h"
@@ -43,14 +43,14 @@ static char* gUninstallerLogPath = nullptr;
 // installed (install flag set) and to know what files are to be removed at
 // uninstallation (all listed files that actually exist).
 // When a file is no longer shipped, just disable the install flag so that the
-// file is still correctly removed when SumatraPDF is eventually uninstalled.
+// file is still correctly removed when GurupiaReader is eventually uninstalled.
 // clang-format off
 const char* gInstalledFiles[] = {
     "libmupdf.dll",
     "PdfFilter.dll",
     "PdfPreview.dll",
     // those probably won't delete because in use
-    "SumatraPDF.exe",
+    "GurupiaReader.exe",
     "RA-MICRO PDF Viewer.exe",
     // files no longer shipped, to be deleted
     "DroidSansFallback.ttf",
@@ -59,8 +59,8 @@ const char* gInstalledFiles[] = {
     "UnRar.dll",
     "UnRar64.dll",
     // other files we might generate
-    "sumatrapdfprefs.dat",
-    "SumatraPDF-settings.txt",
+    "GurupiaReaderprefs.dat",
+    "GurupiaReader-settings.txt",
 };
 // clang-format on
 #endif
@@ -155,7 +155,7 @@ void OnUninstallationFinished() {
     gButtonUninstaller = nullptr;
     gButtonExit = CreateDefaultButton(gHwndFrame, _TRA("Close"));
     gButtonExit->onClick = MkFunc0Void(OnButtonExit);
-    SetMsg(_TRA("SumatraPDF has been uninstalled."), gMsgError ? COLOR_MSG_FAILED : COLOR_MSG_OK);
+    SetMsg(_TRA("GurupiaReader has been uninstalled."), gMsgError ? COLOR_MSG_FAILED : COLOR_MSG_OK);
     gMsgError = gFirstError;
     HwndRepaintNow(gHwndFrame);
 
@@ -177,7 +177,7 @@ static bool UninstallerOnWmCommand(WPARAM wp) {
 #define kInstallerWindowClassName L"SUMATRA_PDF_INSTALLER_FRAME"
 
 static void CreateUninstallerWindow() {
-    TempStr title = str::FormatTemp(_TRA("SumatraPDF %s Uninstaller"), CURR_VERSION_STRA);
+    TempStr title = str::FormatTemp(_TRA("GurupiaReader %s Uninstaller"), CURR_VERSION_STRA);
     int x = CW_USEDEFAULT;
     int y = CW_USEDEFAULT;
     int dx = GetInstallerWinDx();
@@ -190,7 +190,7 @@ static void CreateUninstallerWindow() {
     DpiScale(gHwndFrame, dx, dy);
     HwndResizeClientSize(gHwndFrame, dx, dy);
 
-    gButtonUninstaller = CreateDefaultButton(gHwndFrame, _TRA("Uninstall SumatraPDF"));
+    gButtonUninstaller = CreateDefaultButton(gHwndFrame, _TRA("Uninstall GurupiaReader"));
     gButtonUninstaller->onClick = MkFunc0Void(OnButtonUninstall);
 }
 
@@ -443,7 +443,7 @@ int RunUninstaller() {
         if (uninstallerLogPath) {
             StartLogToFile(uninstallerLogPath, false);
         }
-        logf("------------- Starting SumatraPDF uninstallation\n");
+        logf("------------- Starting GurupiaReader uninstallation\n");
     }
 
     // TODO: remove dependency on this in the uninstaller
@@ -471,7 +471,7 @@ int RunUninstaller() {
     if (!installerExists) {
         log("Uninstaller executable doesn't exist\n");
         auto caption = _TRA("Uninstallation failed");
-        auto msg = _TRA("SumatraPDF installation not found.");
+        auto msg = _TRA("GurupiaReader installation not found.");
         MsgBox(nullptr, msg, caption, MB_ICONEXCLAMATION | MB_OK);
         goto Exit;
     }
@@ -493,7 +493,7 @@ int RunUninstaller() {
         log("Previewer is installed\n");
     }
 
-    gDefaultMsg = _TRA("Are you sure you want to uninstall SumatraPDF?");
+    gDefaultMsg = _TRA("Are you sure you want to uninstall GurupiaReader?");
 
     // unregister search filter and previewer to reduce
     // possibility of blocking

@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -25,7 +25,7 @@
 #include "GlobalPrefs.h"
 #include "Annotation.h"
 #include "AppColors.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "DisplayModel.h"
 #include "Favorites.h"
@@ -399,7 +399,7 @@ next:
         return;
     }
     // short-circuit because this could overflow the stack due to recursion
-    // (happened in doc from https://github.com/sumatrapdfreader/sumatrapdf/issues/1795)
+    // (happened in doc from https://github.com/GurupiaReaderreader/GurupiaReader/issues/1795)
     if (l2r + r2l > 1024) {
         return;
     }
@@ -804,8 +804,8 @@ void OnTocCustomDraw(TreeView::CustomDrawEvent* ev) {
     return;
 }
 
-// disabled becaues of https://github.com/sumatrapdfreader/sumatrapdf/issues/2202
-// it was added for https://github.com/sumatrapdfreader/sumatrapdf/issues/1716
+// disabled becaues of https://github.com/GurupiaReaderreader/GurupiaReader/issues/2202
+// it was added for https://github.com/GurupiaReaderreader/GurupiaReader/issues/1716
 // but unclear if its still needed
 // this calls GoToTocLinkTask) which will eventually call GoToPage()
 // which adds nav point. Maybe I should not add nav point
@@ -843,7 +843,7 @@ static void TocTreeSelectionChanged(TreeView::SelectionChangedEvent* ev) {
 }
 
 void TocTreeKeyDown2(TreeView::KeyDownEvent* ev) {
-    // TODO: trying to fix https://github.com/sumatrapdfreader/sumatrapdf/issues/1841
+    // TODO: trying to fix https://github.com/GurupiaReaderreader/GurupiaReader/issues/1841
     // doesn't work i.e. page up / page down seems to be processed anyway by TreeCtrl
 #if 0
     if ((ev->keyCode == VK_PRIOR) || (ev->keyCode == VK_NEXT)) {

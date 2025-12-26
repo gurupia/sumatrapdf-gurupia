@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -16,7 +16,7 @@
 
 #define SkipWhitespace(c) for (; str::IsWs(*(c)); (c)++)
 // ignore spaces between CJK glyphs but not between Latin, Greek, Cyrillic, etc. letters
-// cf. http://code.google.com/p/sumatrapdf/issues/detail?id=959
+// cf. http://code.google.com/p/GurupiaReader/issues/detail?id=959
 #define isnoncjkwordchar(c) (isWordChar(c) && (unsigned short)(c) < 0x2E80)
 
 static void markAllPagesNonSkip(Vec<bool>& pagesToSkip) {
@@ -86,7 +86,7 @@ void TextSearch::SetText(const WCHAR* text) {
     }
     // Adobe Reader also matches certain hard-to-type Unicode
     // characters when searching for easy-to-type homoglyphs
-    // cf. https://web.archive.org/web/20140201013717/http://forums.fofou.org:80/sumatrapdf/topic?id=2432337&comments=3
+    // cf. https://web.archive.org/web/20140201013717/http://forums.fofou.org:80/GurupiaReader/topic?id=2432337&comments=3
     else if (*text == '-' || *text == '\'' || *text == '"') {
         anchor = nullptr;
     } else {
@@ -224,7 +224,7 @@ TextSearch::PageAndOffset TextSearch::MatchEnd(const WCHAR* start) const {
         }
         // treat "??" and "? ?" differently, since '?' could have been a word
         // character that's just missing an encoding (and '?' is the replacement
-        // character); cf. http://code.google.com/p/sumatrapdf/issues/detail?id=1574
+        // character); cf. http://code.google.com/p/GurupiaReader/issues/detail?id=1574
         if (*match && !isnoncjkwordchar(*(match - 1)) && (*(match - 1) != '?' || *match != '?') ||
             lookingAtWs && str::IsWs(*(match - 1))) {
             SkipWhitespace(match);

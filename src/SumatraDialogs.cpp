@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -11,7 +11,7 @@
 #include "GlobalPrefs.h"
 
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "resource.h"
 #include "Commands.h"
 #include "AppTools.h"
@@ -426,7 +426,7 @@ static INT_PTR CALLBACK Dialog_PdfAssociate_Proc(HWND hDlg, UINT msg, WPARAM wp,
             DarkMode::setDarkWndSafe(hDlg);
         }
         HwndSetText(hDlg, _TRA("Associate with PDF files?"));
-        HwndSetDlgItemText(hDlg, IDC_STATIC, _TRA("Make SumatraPDF default application for PDF files?"));
+        HwndSetDlgItemText(hDlg, IDC_STATIC, _TRA("Make GurupiaReader default application for PDF files?"));
         HwndSetDlgItemText(hDlg, IDC_DONT_ASK_ME_AGAIN, _TRA("&Don't ask me again"));
         CheckDlgButton(hDlg, IDC_DONT_ASK_ME_AGAIN, BST_UNCHECKED);
         HwndSetDlgItemText(hDlg, IDOK, _TRA("&Yes"));
@@ -797,7 +797,7 @@ static INT_PTR CALLBACK Dialog_Settings_Proc(HWND hDlg, UINT msg, WPARAM wp, LPA
             EnableWindow(GetDlgItem(hDlg, IDC_CHECK_FOR_UPDATES), HasPermission(Perm::InternetAccess));
             CheckDlgButton(hDlg, IDC_REMEMBER_OPENED_FILES, prefs->rememberOpenedFiles ? BST_CHECKED : BST_UNCHECKED);
 
-            HwndSetText(hDlg, _TRA("SumatraPDF Options"));
+            HwndSetText(hDlg, _TRA("GurupiaReader Options"));
             HwndSetDlgItemText(hDlg, IDC_SECTION_VIEW, _TRA("View"));
             HwndSetDlgItemText(hDlg, IDC_DEFAULT_LAYOUT_LABEL, _TRA("Default &Layout:"));
             HwndSetDlgItemText(hDlg, IDC_DEFAULT_ZOOM_LABEL, _TRA("Default &Zoom:"));

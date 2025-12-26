@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 /*
@@ -48,7 +48,7 @@ Cmd* enum (e.g. CmdOpen) and a human-readable name (not used yet).
     V(CmdSearchSelectionWithWikipedia, "Search Selection with Wikipedia")          \
     V(CmdSearchSelectionWithGoogleScholar, "Search Selection with Google Scholar") \
     V(CmdSelectAll, "Select All")                                                  \
-    V(CmdNewWindow, "Open New SumatraPDF Window")                                  \
+    V(CmdNewWindow, "Open New GurupiaReader Window")                                  \
     V(CmdDuplicateInNewWindow, "Open Current Document In New Window")              \
     V(CmdCopyImage, "Copy Image")                                                  \
     V(CmdCopyLinkTarget, "Copy Link Target")                                       \
@@ -127,8 +127,8 @@ Cmd* enum (e.g. CmdOpen) and a human-readable name (not used yet).
     V(CmdHelpOpenManual, "Help: Manual")                                           \
     V(CmdHelpOpenManualOnWebsite, "Help: Manual On Website")                       \
     V(CmdHelpOpenKeyboardShortcuts, "Help: Keyboard Shortcuts")                    \
-    V(CmdHelpVisitWebsite, "Help: SumatraPDF Website")                             \
-    V(CmdHelpAbout, "Help: About SumatraPDF")                                      \
+    V(CmdHelpVisitWebsite, "Help: GurupiaReader Website")                             \
+    V(CmdHelpAbout, "Help: About GurupiaReader")                                      \
     V(CmdOptions, "Options...")                                                    \
     V(CmdAdvancedOptions, "Advanced Options...")                                   \
     V(CmdAdvancedSettings, "Advanced Settings...")                                 \

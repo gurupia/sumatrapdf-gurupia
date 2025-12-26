@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -552,7 +552,7 @@ Repeat:
         return PDFSYNCERR_SYNCFILE_NOTFOUND;
     }
 
-    // Note: https://github.com/sumatrapdfreader/sumatrapdf/discussions/2640#discussioncomment-2861368
+    // Note: https://github.com/GurupiaReaderreader/GurupiaReader/discussions/2640#discussioncomment-2861368
     // reported failure to parse a large (12 MB) .synctex.gz even though file exists
     pathNoExt = path::GetPathNoExtTemp(syncFilePath);
     pathSyncGz = str::JoinTemp(pathNoExt, ".synctex.gz");

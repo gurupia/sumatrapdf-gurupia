@@ -1,10 +1,10 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 struct DoubleBuffer;
 struct LinkHandler;
 struct StressTest;
-class SumatraUIAutomationProvider;
+class ReaderUIAutomationProvider;
 struct FrameRateWnd;
 struct LabelWithCloseWnd;
 struct Splitter;
@@ -236,7 +236,7 @@ struct MainWindow {
 
     FrameRateWnd* frameRateWnd = nullptr;
 
-    SumatraUIAutomationProvider* uiaProvider = nullptr;
+    ReaderUIAutomationProvider* uiaProvider = nullptr;
 
     void UpdateCanvasSize();
     Size GetViewPortSize() const;

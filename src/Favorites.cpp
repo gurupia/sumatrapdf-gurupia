@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -21,7 +21,7 @@
 #include "SumatraConfig.h"
 #include "FileHistory.h"
 #include "GlobalPrefs.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
 #include "resource.h"

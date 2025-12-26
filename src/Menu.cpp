@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -28,7 +28,7 @@
 #include "Annotation.h"
 #include "AppColors.h"
 #include "SumatraConfig.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "SumatraDialogs.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
@@ -1988,11 +1988,11 @@ void OnWindowContextMenu(MainWindow* win, int x, int y) {
         case CmdSaveAnnotationsNewFile:
         case CmdFavoriteAdd:
         case CmdToggleFullscreen:
-            // handle in FrameOnCommand() in SumatraPDF.cpp
+            // handle in FrameOnCommand() in GurupiaReader.cpp
             HwndSendCommand(win->hwndFrame, cmdId);
             break;
 
-            // note: those are duplicated in SumatraPDF.cpp to enable keyboard shortcuts for them
+            // note: those are duplicated in GurupiaReader.cpp to enable keyboard shortcuts for them
 #if 0
         case CmdSelectAnnotation:
             ReportIf(!ctx->annotationUnderCursor);

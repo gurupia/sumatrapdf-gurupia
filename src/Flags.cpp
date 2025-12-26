@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -112,7 +112,7 @@ static void EnumeratePrinters() {
     }
     if (ok == 0 || !info5Arr) {
         out.AppendFmt("Call to EnumPrinters failed with error %#x", GetLastError());
-        MsgBox(nullptr, out.CStr(), "SumatraPDF - EnumeratePrinters", MB_OK | MB_ICONERROR);
+        MsgBox(nullptr, out.CStr(), "GurupiaReader - EnumeratePrinters", MB_OK | MB_ICONERROR);
         free(info5Arr);
         return;
     }
@@ -147,7 +147,7 @@ static void EnumeratePrinters() {
         }
     }
     free(info5Arr);
-    MsgBox(nullptr, out.CStr(), "SumatraPDF - EnumeratePrinters", MB_OK | MB_ICONINFORMATION);
+    MsgBox(nullptr, out.CStr(), "GurupiaReader - EnumeratePrinters", MB_OK | MB_ICONINFORMATION);
 }
 
 // parses a list of page ranges such as 1,3-5,7- (i..e all but pages 2 and 6)
@@ -378,7 +378,7 @@ void ParseFlags(const WCHAR* cmdLine, Flags& i) {
     int paramInt = 0;
 
     for (const char* argName = args.NextArg(); argName != nullptr; argName = args.NextArg()) {
-        // we register SumatraPDF with "%1" "%2" "%3" "%4"
+        // we register GurupiaReader with "%1" "%2" "%3" "%4"
         // for some reason that makes Directory Opus "Open With" provide the file twice
         // and gives "%3" and "%4' on cmd-line.
         // this is a hack to ignore that
@@ -590,7 +590,7 @@ void ParseFlags(const WCHAR* cmdLine, Flags& i) {
         if (arg == Arg::Plugin) {
             // -plugin [<URL>] <parent HWND>
             // <parent HWND> is a (numeric) window handle to
-            // become the parent of a frameless SumatraPDF
+            // become the parent of a frameless GurupiaReader
             // (used e.g. for embedding it into a browser plugin)
             if (args.AdditionalParam(1) && !str::IsDigit(*param)) {
                 i.pluginURL = str::Dup(param);

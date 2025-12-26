@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -324,7 +324,7 @@ IFACEMETHODIMP PreviewBase::DoPreview() {
     wcex.cbSize = sizeof(wcex);
     wcex.lpfnWndProc = PreviewWndProc;
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.lpszClassName = L"SumatraPDF_PreviewPane";
+    wcex.lpszClassName = L"GurupiaReader_PreviewPane";
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     RegisterClassEx(&wcex);
 

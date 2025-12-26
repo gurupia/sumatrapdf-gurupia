@@ -1,4 +1,4 @@
-/* Copyright 2024 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2024 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD */
 
 #include "utils/BaseUtil.h"
@@ -33,9 +33,9 @@
 // decide if will risk it and enable logf() calls or convert
 // logf() into a series of log() calls
 
-#define kCrashHandlerServer "www.sumatrapdfreader.org"
+#define kCrashHandlerServer "www.GurupiaReaderreader.org"
 #define kCrashHandlerServerPort 443
-#define kCrashHandlerServerSubmitURL "/uploadcrash/sumatrapdf-crashes"
+#define kCrashHandlerServerSubmitURL "/uploadcrash/GurupiaReader-crashes"
 
 // The following functions allow crash handler to be used by both installer
 // and sumatra proper. They must be implemented for each app.
@@ -274,7 +274,7 @@ bool CrashHandlerDownloadSymbols() {
 }
 
 bool AreSymbolsDownloaded(const char* symDir) {
-    TempStr path = path::JoinTemp(symDir, "SumatraPDF.pdb");
+    TempStr path = path::JoinTemp(symDir, "GurupiaReader.pdb");
     if (file::Exists(path)) {
         logf("AreSymbolsDownloaded(): exist in '%s', symDir: '%s'\n", path, symDir);
         return true;
@@ -407,8 +407,8 @@ static DWORD WINAPI CrashDumpThread(LPVOID) {
     _uploadDebugReport(nullptr, true, true);
 
     // always write a MiniDump (for the latest crash only)
-    // set the SUMATRAPDF_FULLDUMP environment variable for more complete dumps
-    DWORD n = GetEnvironmentVariableA("SUMATRAPDF_FULLDUMP", nullptr, 0);
+    // set the GurupiaReader_FULLDUMP environment variable for more complete dumps
+    DWORD n = GetEnvironmentVariableA("GurupiaReader_FULLDUMP", nullptr, 0);
     bool fullDump = (0 != n);
     TempWStr ws = ToWStrTemp(gCrashDumpPath);
     dbghelp::WriteMiniDump(ws, &gMei, fullDump);
@@ -742,14 +742,14 @@ int __cdecl _purecall() {
 
 // Get url for file with symbols. Caller needs to free().
 static char* BuildSymbolsUrl() {
-    const char* urlBase = "https://www.sumatrapdfreader.org/dl/";
+    const char* urlBase = "https://www.GurupiaReaderreader.org/dl/";
     if (gIsPreReleaseBuild) {
         const char* ver = preReleaseVersion;
-        urlBase = str::JoinTemp(urlBase, "prerel/", ver, "/SumatraPDF-prerel");
+        urlBase = str::JoinTemp(urlBase, "prerel/", ver, "/GurupiaReader-prerel");
     } else {
         // assuming this is release version
         const char* ver = QM(CURR_VERSION);
-        urlBase = str::JoinTemp(urlBase, "rel/", ver, "/SumatraPDF-", ver);
+        urlBase = str::JoinTemp(urlBase, "rel/", ver, "/GurupiaReader-", ver);
     }
     const char* suff = "-32.pdb.lzsa";
 #if IS_ARM_64 == 1

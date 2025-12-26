@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -46,7 +46,7 @@ char* GetThumbnailPathTemp(const char* filePath) {
 }
 
 TempStr GetThumbnailCacheDirTemp() {
-    TempStr thumbsDir = GetPathInAppDataDirTemp("sumatrapdfcache");
+    TempStr thumbsDir = GetPathInAppDataDirTemp("GurupiaReadercache");
     return thumbsDir;
 }
 

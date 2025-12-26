@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 // hack to prevent libdjvu from being built as an export/import library
@@ -182,7 +182,7 @@ struct DjVuContext {
     ddjvu_document_t* OpenFile(const char* fileName) {
         ScopedCritSec scope(&lock);
         // TODO: libdjvu sooner or later crashes inside its caching code; cf.
-        //       http://code.google.com/p/sumatrapdf/issues/detail?id=1434
+        //       http://code.google.com/p/GurupiaReader/issues/detail?id=1434
         return ddjvu_document_create_by_filename_utf8(ctx, fileName, /* cache */ FALSE);
     }
 

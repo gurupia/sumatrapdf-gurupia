@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 // must be #included from Regress.cpp
@@ -15,19 +15,19 @@ static void RegressTestEpubLoading(const char *fileName)
     delete doc;
 }
 
-// http://code.google.com/p/sumatrapdf/issues/detail?id=2102
+// http://code.google.com/p/GurupiaReader/issues/detail?id=2102
 static void Regress02()
 {
     RegressTestEpubLoading("epub\\sumatra-crash-nov-23-2012.epub");
 }
 
-// http://code.google.com/p/sumatrapdf/issues/detail?id=2091
+// http://code.google.com/p/GurupiaReader/issues/detail?id=2091
 static void Regress01()
 {
     RegressTestEpubLoading("epub\\sumatra-crash-nov-12-2012.epub");
 }
 
-// http://code.google.com/p/sumatrapdf/issues/detail?id=1926
+// http://code.google.com/p/GurupiaReader/issues/detail?id=1926
 static void Regress00()
 {
     char *filePath = path::Join(TestFilesDir(), "epub\\widget-figure-gallery-20120405.epub");

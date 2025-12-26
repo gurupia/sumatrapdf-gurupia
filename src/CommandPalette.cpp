@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -23,7 +23,7 @@
 #include "SumatraConfig.h"
 #include "Commands.h"
 #include "CommandPalette.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "Tabs.h"
 #include "ExternalViewers.h"
 #include "Annotation.h"

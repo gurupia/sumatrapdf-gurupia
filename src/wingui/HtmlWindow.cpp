@@ -1,4 +1,4 @@
-/* Copyright 2024 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2024 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -18,7 +18,7 @@
 // IE's built-in support form CHM documents (using its: protocol
 // http://msdn.microsoft.com/en-us/library/aa164814(v=office.10).aspx).
 // However, that doesn't work for CHM documents from network drives
-// (http://code.google.com/p/sumatrapdf/issues/detail?id=1706)
+// (http://code.google.com/p/GurupiaReader/issues/detail?id=1706)
 // To solve that we ended up the following solution:
 // * an app can provide html as data in memory. We write the data using custom
 //   IMoniker implementation with IE's IPersistentMoniker::Load() function.

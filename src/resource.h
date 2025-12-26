@@ -1,8 +1,8 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by SumatraPDF.rc
+// Used by GurupiaReader.rc
 //
-#define IDI_SUMATRAPDF                  1
+#define IDI_GurupiaReader                  1
 
 #define IDD_DIALOG_GOTO_PAGE            129
 #define IDD_DIALOG_GET_PASSWORD         130

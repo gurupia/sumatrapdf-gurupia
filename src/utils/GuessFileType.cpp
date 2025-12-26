@@ -1,5 +1,5 @@
 
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -320,7 +320,7 @@ Kind GuessFileTypeFromContent(const ByteSlice& d) {
 
 static bool IsEpubArchive(MultiFormatArchive* archive) {
     // assume that if this file exists, this is a epub file
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1801
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1801
     ByteSlice container = archive->GetFileDataByName("META-INF/container.xml");
     if (container) {
         container.Free();
@@ -346,7 +346,7 @@ static bool IsEpubArchive(MultiFormatArchive* archive) {
 #if 0
     // a proper EPUB document has a "mimetype" file with content
     // "application/epub+zip" as the first entry in its ZIP structure
-    // https://web.archive.org/web/20140201013228/http://forums.fofou.org:80/sumatrapdf/topic?id=2599331&comments=6
+    // https://web.archive.org/web/20140201013228/http://forums.fofou.org:80/GurupiaReader/topic?id=2599331&comments=6
     if (!str::Eq(archive.GetFileName(0), L"mimetype")) {
         return false; 
     }

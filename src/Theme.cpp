@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
 License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -274,7 +274,7 @@ COLORREF ThemeDocumentColors(COLORREF& bg) {
     bg = ThemeMainWindowBackgroundColor();
 
     if (gCurrThemeIndex < 3) {
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/4465
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/4465
         // this is probably not expected for custom colors but we used to do
         // it for built-in themes
         // so do it for legacy themes but not for custom themes or new Dark theme

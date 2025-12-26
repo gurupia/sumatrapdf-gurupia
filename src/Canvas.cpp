@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -35,7 +35,7 @@
 #include "TextSearch.h"
 #include "SumatraConfig.h"
 #include "WindowTab.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "EditAnnotations.h"
 #include "Notifications.h"
 #include "MainWindow.h"
@@ -853,7 +853,7 @@ static void DebugShowLinks(DisplayModel* dm, HDC hdc) {
     }
 }
 
-// cf. https://web.archive.org/web/20140201011540/http://forums.fofou.org/sumatrapdf/topic?id=3183580&comments=15
+// cf. https://web.archive.org/web/20140201011540/http://forums.fofou.org/GurupiaReader/topic?id=3183580&comments=15
 static void GetGradientColor(COLORREF a, COLORREF b, float perc, TRIVERTEX* tv) {
     u8 ar, ag, ab;
     u8 br, bg, bb;

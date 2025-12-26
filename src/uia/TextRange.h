@@ -1,15 +1,15 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 struct TextSelection;
-class SumatraUIAutomationDocumentProvider;
+class ReaderUIAutomationDocumentProvider;
 
-class SumatraUIAutomationTextRange : public ITextRangeProvider {
+class ReaderUIAutomationTextRange : public ITextRangeProvider {
     LONG refCount;
 
     // used for getting dm and document state (== is document closed == dm is invalid)
     // text range will hold reference to document to prevent it from being removed
-    SumatraUIAutomationDocumentProvider* document;
+    ReaderUIAutomationDocumentProvider* document;
 
     // TODO: this part is very much like TextSelection. Merge them somehow?
     // TODO: extend TextSelection to make these unnecessary
@@ -18,18 +18,18 @@ class SumatraUIAutomationTextRange : public ITextRangeProvider {
 
   public:
     // creates empty range
-    SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document);
+    ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document);
     // creates range containing the given page
-    SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document, int pageNum);
+    ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document, int pageNum);
     // creates range containing the given TextSelection range
-    SumatraUIAutomationTextRange(SumatraUIAutomationDocumentProvider* document, TextSelection* range);
+    ReaderUIAutomationTextRange(ReaderUIAutomationDocumentProvider* document, TextSelection* range);
     // creates a copy of give range
-    SumatraUIAutomationTextRange(const SumatraUIAutomationTextRange&);
-    SumatraUIAutomationTextRange& operator=(const SumatraUIAutomationTextRange&) = delete;
+    ReaderUIAutomationTextRange(const ReaderUIAutomationTextRange&);
+    ReaderUIAutomationTextRange& operator=(const ReaderUIAutomationTextRange&) = delete;
 
-    ~SumatraUIAutomationTextRange();
+    ~ReaderUIAutomationTextRange();
 
-    bool operator==(const SumatraUIAutomationTextRange&) const;
+    bool operator==(const ReaderUIAutomationTextRange&) const;
 
     void SetToDocumentRange();
     void SetToNullRange();

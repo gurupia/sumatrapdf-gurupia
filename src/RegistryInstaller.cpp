@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -15,7 +15,7 @@
 // All registry manipulation needed for installer / uninstaller
 
 // clang-format off
-// list of supported file extensions for which SumatraPDF.exe will
+// list of supported file extensions for which GurupiaReader.exe will
 // be registered as a candidate for the Open With dialog's suggestions
 static SeqStrings gSupportedExts = 
     ".pdf\0.xps\0.oxps\0.cbz\0.cbr\0.cb7\0.cbt\0" \
@@ -92,9 +92,9 @@ bool WriteUninstallerRegistryInfo(HKEY hkey, bool allUsers, const char* installD
     ok &= LoggedWriteRegStr(hkey, regPathUninst, "UninstallString", uninstallCmdLine);
     TempStr uninstallCmdLineSilent = str::JoinTemp(uninstallCmdLine, " -silent");
     ok &= LoggedWriteRegStr(hkey, regPathUninst, "QuietUninstallString", uninstallCmdLineSilent);
-    ok &= LoggedWriteRegStr(hkey, regPathUninst, "URLInfoAbout", "https://www.sumatrapdfreader.org/");
+    ok &= LoggedWriteRegStr(hkey, regPathUninst, "URLInfoAbout", "https://www.GurupiaReaderreader.org/");
     ok &= LoggedWriteRegStr(hkey, regPathUninst, "URLUpdateInfo",
-                            "https://www.sumatrapdfreader.org/docs/Version-history.html");
+                            "https://www.GurupiaReaderreader.org/docs/Version-history.html");
     if (!ok) {
         log("WriteUninstallerRegistryInfo() failed\n");
     }
@@ -106,15 +106,15 @@ bool WriteUninstallerRegistryInfo(HKEY hkey, bool allUsers, const char* installD
 static bool RegisterForDefaultPrograms(HKEY hkey) {
     bool ok = true;
 
-    // L"SOFTWARE\\SumatraPDF\\Capabilities"
+    // L"SOFTWARE\\GurupiaReader\\Capabilities"
     char* appCapabilityPath = str::JoinTemp("SOFTWARE\\", kAppName, "\\Capabilities");
 
-    const char* desc = "SumatraPDF is a PDF reader.";
+    const char* desc = "GurupiaReader is a PDF reader.";
     ok &= LoggedWriteRegStr(hkey, appCapabilityPath, "ApplicationDescription", desc);
-    const char* appLongName = "SumatraPDF Reader";
+    const char* appLongName = "GurupiaReader Reader";
     ok &= LoggedWriteRegStr(hkey, appCapabilityPath, "ApplicationName", appLongName);
 
-    // L"SOFTWARE\\SumatraPDF\\Capabilities\\FileAssociations"
+    // L"SOFTWARE\\GurupiaReader\\Capabilities\\FileAssociations"
     char* keyAssoc = str::JoinTemp(appCapabilityPath, "\\FileAssociations");
 
     auto ext = gSupportedExts;
@@ -131,10 +131,10 @@ static bool RegisterForDefaultPrograms(HKEY hkey) {
 ShCtx is either HKCU or HKLM
 
 For each extension, create a progid:
-ShCtx\Software\Classes\SumatraPDF.${ext}
+ShCtx\Software\Classes\GurupiaReader.${ext}
   Application
     ApplicationCompany = Krzysztof Kowalczyk
-    ApplicationName = SumatraPDF
+    ApplicationName = GurupiaReader
   DefaultIcon
     (Default) = ${SumatraExePath},${OptIconIndex}
   shell\open
@@ -146,7 +146,7 @@ ShCtx\Software\Classes\SumatraPDF.${ext}
 
 Then in:
 ShCtx\Software\Classes\${ext}\OpenWithProgids
-  SumatraPDF.${ext} = "" (empty REG_SZ value)
+  GurupiaReader.${ext} = "" (empty REG_SZ value)
 */
 static bool RegisterForOpenWith(HKEY hkey, const char* installedExePath) {
     char* exePathQuoted = str::JoinTemp(R"(")", installedExePath, R"(")");
@@ -166,7 +166,7 @@ static bool RegisterForOpenWith(HKEY hkey, const char* installedExePath) {
         char* extUC = str::ToUpperInPlace(str::DupTemp(ext + 1));
         char* desc = str::JoinTemp(extUC, " File");
         ok &= LoggedWriteRegStr(hkey, progIDKey, nullptr, desc);
-        // ok &= LoggedWriteRegStr(hkey, progIDKey, L"AppUserModelID", L"SumatraPDF"); // ???
+        // ok &= LoggedWriteRegStr(hkey, progIDKey, L"AppUserModelID", L"GurupiaReader"); // ???
 
         // Per https://docs.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-extracticona
         // ",${n}" => n is 0-based index of the icon
@@ -212,15 +212,15 @@ static bool RegisterForOpenWith(HKEY hkey, const char* installedExePath) {
 
 #if 0
 bool ListAsDefaultProgramPreWin10(HKEY hkey) {
-    // add the installed SumatraPDF.exe to the Open With lists of the supported file extensions
+    // add the installed GurupiaReader.exe to the Open With lists of the supported file extensions
     // TODO: per http://msdn.microsoft.com/en-us/library/cc144148(v=vs.85).aspx we shouldn't be
     // using OpenWithList but OpenWithProgIds. Also, it doesn't seem to work on my win7 32bit
-    // (HKLM\Software\Classes\.mobi\OpenWithList\SumatraPDF.exe key is present but "Open With"
+    // (HKLM\Software\Classes\.mobi\OpenWithList\GurupiaReader.exe key is present but "Open With"
     // menu item doesn't even exist for .mobi files
-    // It's not so easy, though, because if we just set it to SumatraPDF,
+    // It's not so easy, though, because if we just set it to GurupiaReader,
     // all GetSupportedExts() will be reported as "PDF Document" by Explorer, so this needs
     // to be more intelligent. We should probably mimic Windows Media Player scheme i.e.
-    // set OpenWithProgIds to SumatraPDF.AssocFile.Mobi etc. and create apropriate
+    // set OpenWithProgIds to GurupiaReader.AssocFile.Mobi etc. and create apropriate
     // \SOFTWARE\Classes\CLSID\{GUID}\ProgID etc. entries
     // Also, if Sumatra is the only program handling those docs, our
     // PDF icon will be shown (we need icons and properly configure them)
@@ -245,28 +245,28 @@ The following paths exist under both HKEY_LOCAL_MACHINE and HKEY_CURRENT_USER.
 HKCU has precedence over HKLM.
 
 Software\Classes\.pdf default key is name of reg entry describing the app
-  handling opening PDF files. In our case it's SumatraPDF
+  handling opening PDF files. In our case it's GurupiaReader
 Software\Classes\.pdf\OpenWithProgids
-  should contain SumatraPDF so that it's easier for the user to later
-  restore SumatraPDF to become the default app through Windows Explorer,
+  should contain GurupiaReader so that it's easier for the user to later
+  restore GurupiaReader to become the default app through Windows Explorer,
   cf. http://msdn.microsoft.com/en-us/library/cc144148(v=vs.85).aspx
 
-Software\Classes\SumatraPDF\DefaultIcon = $exePath,1
+Software\Classes\GurupiaReader\DefaultIcon = $exePath,1
   1 means the second icon resource within the executable
-Software\Classes\SumatraPDF\shell\open\command = "$exePath" "%1"
+Software\Classes\GurupiaReader\shell\open\command = "$exePath" "%1"
   tells how to call sumatra to open PDF file. %1 is replaced by PDF file path
 
 Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\Progid
-  should be SumatraPDF (Foxit takes it over); only needed for HKEY_CURRENT_USER
+  should be GurupiaReader (Foxit takes it over); only needed for HKEY_CURRENT_USER
   TODO: No other app seems to set this one, and only UserChoice seems to make
         a difference - is this still required for Windows XP?
 
 Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\Application
-  should be SumatraPDF.exe; only needed for HKEY_CURRENT_USER
+  should be GurupiaReader.exe; only needed for HKEY_CURRENT_USER
   Windows XP seems to use this instead of:
 
 Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice\Progid
-  should be SumatraPDF as well (also only needed for HKEY_CURRENT_USER);
+  should be GurupiaReader as well (also only needed for HKEY_CURRENT_USER);
   this key is used for remembering a user's choice with Explorer's Open With dialog
   and can't be written to - so we delete it instead!
 
@@ -342,7 +342,7 @@ void DoAssociateExeWithPdfExtension(HKEY hkey) {
     }
 
     LoggedWriteRegStr(hkey, kRegClassesPdf, nullptr, appName);
-    // TODO: also add SumatraPDF to the Open With lists for the other supported extensions?
+    // TODO: also add GurupiaReader to the Open With lists for the other supported extensions?
     LoggedWriteRegStr(hkey, kRegClassesPdf LR"(\OpenWithProgids)", appName, L"");
     if (hkey == HKEY_CURRENT_USER) {
         LoggedWriteRegStr(hkey, kRegExplorerPdfExt, L"Progid", appName);
@@ -385,7 +385,7 @@ bool IsExeAssociatedWithPdfExtension() {
         return false;
     }
 
-    // HKEY_CLASSES_ROOT\SumatraPDF\shell\open default key must be: open
+    // HKEY_CLASSES_ROOT\GurupiaReader\shell\open default key must be: open
     {
         AutoFreeWStr key = str::Join(appName, LR"(\shell)");
         tmp.Set(LoggedReadRegStr(HKEY_CLASSES_ROOT, key, nullptr));
@@ -394,7 +394,7 @@ bool IsExeAssociatedWithPdfExtension() {
         return false;
     }
 
-    // HKEY_CLASSES_ROOT\SumatraPDF\shell\open\command default key must be: "${exe_path}" "%1"
+    // HKEY_CLASSES_ROOT\GurupiaReader\shell\open\command default key must be: "${exe_path}" "%1"
     {
         AutoFreeWStr key = str::Join(appName, LR"(\shell\open\command)");
         tmp.Set(LoggedReadRegStr(HKEY_CLASSES_ROOT, key, nullptr));

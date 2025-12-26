@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -29,7 +29,7 @@
 #include "TextSelection.h"
 #include "TextSearch.h"
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
 #include "TableOfContents.h"
@@ -399,7 +399,7 @@ bool MainWindow::CreateUIAProvider() {
     if (uiaProvider) {
         return true;
     }
-    uiaProvider = new SumatraUIAutomationProvider(this->hwndCanvas);
+    uiaProvider = new ReaderUIAutomationProvider(this->hwndCanvas);
     if (!uiaProvider) {
         return false;
     }
@@ -459,7 +459,7 @@ void LinkHandler::ScrollTo(IPageDestination* dest) {
         return;
     }
     // TODO: this seems like a hack, there should be a better way
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/3499
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/3499
     ChmModel* chm = win->ctrl->AsChm();
     if (chm) {
         chm->HandleLink(dest, nullptr);
@@ -499,7 +499,7 @@ void LinkHandler::LaunchURL(const char* uri) {
     }
 }
 
-// for safety, only handle relative paths and only open them in SumatraPDF
+// for safety, only handle relative paths and only open them in GurupiaReader
 // (unless they're of an allowed perceived type) and never launch any external
 // file in plugin mode (where documents are supposed to be self-contained)
 void LinkHandler::LaunchFile(const char* pathOrig, IPageDestination* remoteLink) {

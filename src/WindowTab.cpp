@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -16,7 +16,7 @@
 #include "GlobalPrefs.h"
 #include "ChmModel.h"
 #include "DisplayModel.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
 #include "Selection.h"
@@ -123,7 +123,7 @@ void WindowTab::ToggleZoom() const {
     ctrl->SetZoomVirtual(newZoom, nullptr);
 }
 
-// https://github.com/sumatrapdfreader/sumatrapdf/issues/1336
+// https://github.com/GurupiaReaderreader/GurupiaReader/issues/1336
 #if 0
 LinkSaver::LinkSaver(WindowTab* tab, HWND parentHwnd, const WCHAR* fileName) {
     this->tab = tab;
@@ -167,7 +167,7 @@ bool SaveDataToFile(HWND hwndParent, char* fileNameA, ByteSlice data) {
     }
     TempStr path = ToUtf8Temp(dstFileName);
     ok = file::WriteFile(path, data);
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1336
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1336
 #if 0
     if (ok && tab && IsUntrustedFile(tab->filePath, gPluginURL)) {
         file::SetZoneIdentifier(dstFileName);

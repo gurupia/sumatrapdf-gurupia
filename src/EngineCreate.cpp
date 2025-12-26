@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -12,7 +12,7 @@
 #include "SumatraConfig.h"
 #include "Annotation.h"
 #include "Settings.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "DocController.h"
 #include "EngineBase.h"
 #include "EngineAll.h"
@@ -102,7 +102,7 @@ static EngineBase* CreateEngineForKind(Kind kind, const char* path, PasswordUI* 
     }
     if (gEnableEpubWithPdfEngine && IsEngineMupdfSupportedFileType(kind)) {
         engine = CreateEngineMupdfFromFile(path, kind, dpi, pwdUI);
-        // https://github.com/sumatrapdfreader/sumatrapdf/issues/2212
+        // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2212
         // if failed to open with EngineMupdf, will also try to open
         // with my engine
         if (engine) {

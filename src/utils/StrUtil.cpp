@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "BaseUtil.h"
@@ -682,7 +682,7 @@ char* FmtVWithAllocator(Allocator* a, const char* fmt, va_list args) {
     char* buf = message;
     for (;;) {
         int count = vsnprintf(buf, (size_t)bufCchSize, fmt, args);
-        // happened in https://github.com/sumatrapdfreader/sumatrapdf/issues/878
+        // happened in https://github.com/GurupiaReaderreader/GurupiaReader/issues/878
         // when %S string had certain Unicode characters
         ReportIf(count == -1);
         if (count < 0) {

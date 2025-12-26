@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: Simplified BSD (see COPYING.BSD) */
 
 #include "utils/BaseUtil.h"
@@ -50,7 +50,7 @@ The information that we need to remember:
 * text color (when/if we support changing text color)
 * more ?
 
-TODO: fix http://code.google.com/p/sumatrapdf/issues/detail?id=2183
+TODO: fix http://code.google.com/p/GurupiaReader/issues/detail?id=2183
 
 TODO: HtmlFormatter could be split into DrawInstrBuilder which knows pageDx, pageDy
 and generates DrawInstr and splits them into pages and a better named class that
@@ -692,8 +692,8 @@ void HtmlFormatter::EmitElasticSpace() {
 // return true if we can break a word on a given character during layout
 static bool CanBreakWordOnChar(WCHAR c) {
     // don't break on Chinese and Japan characters
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/250
-    // https://github.com/sumatrapdfreader/sumatrapdf/pull/1057
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/250
+    // https://github.com/GurupiaReaderreader/GurupiaReader/pull/1057
     // There are other  ranges, but far less common
     // https://stackoverflow.com/questions/1366068/whats-the-complete-range-for-chinese-characters-in-unicode
     return c >= 0x2E80 && c <= 0xA4CF;

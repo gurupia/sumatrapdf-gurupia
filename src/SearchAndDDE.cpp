@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -23,7 +23,7 @@
 #include "TextSelection.h"
 #include "TextSearch.h"
 #include "Notifications.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "MainWindow.h"
 #include "WindowTab.h"
 #include "resource.h"
@@ -454,7 +454,7 @@ void FindTextOnThread(MainWindow* win, TextSearch::Direction direction, const ch
     ftd->thread = win->findThread; // safe because only accesssed on ui thread
 }
 
-// TODO: for https://github.com/sumatrapdfreader/sumatrapdf/issues/2655
+// TODO: for https://github.com/GurupiaReaderreader/GurupiaReader/issues/2655
 char* ReverseTextTemp(char* s) {
     TempWStr ws = ToWStrTemp(s);
     int n = str::Leni(ws);
@@ -590,7 +590,7 @@ bool OnInverseSearch(MainWindow* win, int x, int y) {
     args.hwndParent = win->hwndCanvas;
     args.msg = _TRA("Cannot start inverse search command. Please check the command line in the settings.");
     if (!str::IsEmpty(cmdLine.Get())) {
-        // resolve relative paths with relation to SumatraPDF.exe's directory
+        // resolve relative paths with relation to GurupiaReader.exe's directory
         char* appDir = GetSelfExeDirTemp();
         AutoCloseHandle process(LaunchProcessInDir(cmdLine, appDir));
         if (!process) {
@@ -872,7 +872,7 @@ static const char* HandleOpenCmd(const char* cmd, bool* ack) {
             logf("HandleOpenCmd: using the only window\n");
         }
         if (!win) {
-            // https://github.com/sumatrapdfreader/sumatrapdf/issues/2315
+            // https://github.com/GurupiaReaderreader/GurupiaReader/issues/2315
             // open in the last active window
             win = FindMainWindowByHwnd(gLastActiveFrameHwnd);
             if (win) {

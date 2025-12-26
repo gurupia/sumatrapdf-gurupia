@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -183,7 +183,7 @@ STDAPI DllRegisterServer() {
     }
     logf("DllRegisterServer: dllPath=%s\n", dllPath);
 
-    // for compat with SumatraPDF 3.3 and lower
+    // for compat with GurupiaReader 3.3 and lower
     // in 3.4 we call this code from the installer
     // pre-3.4 we would write to both HKLM (if permissions) and HKCU
     // in 3.4+ this will only install for current user (HKCU)

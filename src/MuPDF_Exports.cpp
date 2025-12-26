@@ -1,11 +1,11 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 // Re-declare variables for when building libmupdf.dll,
 // as exporting/importing them prevents sharing of .obj
 // files for all files using them - instead we can just
 // link this file along libmupdf.lib and omit it when
-// building a static SumatraPDF.exe.
+// building a static GurupiaReader.exe.
 
 #if defined(_MSC_VER)
 #pragma warning(push)

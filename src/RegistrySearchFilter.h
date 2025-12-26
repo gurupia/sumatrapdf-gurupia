@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #define kPdfFilterClsid "{55808EA8-81FE-43c6-AAE8-1D8149F941D3}"

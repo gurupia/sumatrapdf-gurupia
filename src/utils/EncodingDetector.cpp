@@ -1,4 +1,4 @@
-﻿/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+﻿/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -843,78 +843,118 @@ EncodingResult EncodingDetector::DetectFromContent(const ByteSlice& data) {
     uint bestCodepage = 0;
     const char* bestName = nullptr;
 
+    uint systemCP = GetACP();
+    float weight = 0.15f; // Boost for system default encoding
+
     // East Asian encodings
-    if (isEucKr && eucKrScore > maxScore) {
-        maxScore = eucKrScore;
-        bestCodepage = 949;
-        bestName = "EUC-KR";
+    if (isEucKr) {
+        float score = eucKrScore + (systemCP == 949 || systemCP == 51949 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = (systemCP == 949) ? 949 : 51949; // Prefer more accurate CP if possible
+            if (bestCodepage != 949 && bestCodepage != 51949) bestCodepage = 949;
+            bestName = "EUC-KR";
+        }
     }
 
-    if (isShiftJis && shiftJisScore > maxScore) {
-        maxScore = shiftJisScore;
-        bestCodepage = 932;
-        bestName = "Shift-JIS";
+    if (isShiftJis) {
+        float score = shiftJisScore + (systemCP == 932 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 932;
+            bestName = "Shift-JIS";
+        }
     }
 
-    if (isGb2312 && gb2312Score > maxScore) {
-        maxScore = gb2312Score;
-        bestCodepage = 936;
-        bestName = "GB2312";
+    if (isGb2312) {
+        float score = gb2312Score + (systemCP == 936 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 936;
+            bestName = "GB2312";
+        }
     }
 
-    if (isBig5 && big5Score > maxScore) {
-        maxScore = big5Score;
-        bestCodepage = 950;
-        bestName = "Big5";
+    if (isBig5) {
+        float score = big5Score + (systemCP == 950 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 950;
+            bestName = "Big5";
+        }
     }
 
     // European/Middle Eastern encodings
-    if (isCentralEuropean && centralEuropeanScore > maxScore) {
-        maxScore = centralEuropeanScore;
-        bestCodepage = 1250;
-        bestName = "Windows-1250";
+    if (isCentralEuropean) {
+        float score = centralEuropeanScore + (systemCP == 1250 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1250;
+            bestName = "Windows-1250";
+        }
     }
 
-    if (isCyrillic && cyrillicScore > maxScore) {
-        maxScore = cyrillicScore;
-        bestCodepage = 1251;
-        bestName = "Windows-1251";
+    if (isCyrillic) {
+        float score = cyrillicScore + (systemCP == 1251 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1251;
+            bestName = "Windows-1251";
+        }
     }
 
-    if (isGreek && greekScore > maxScore) {
-        maxScore = greekScore;
-        bestCodepage = 1253;
-        bestName = "Windows-1253";
+    if (isGreek) {
+        float score = greekScore + (systemCP == 1253 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1253;
+            bestName = "Windows-1253";
+        }
     }
 
-    if (isTurkish && turkishScore > maxScore) {
-        maxScore = turkishScore;
-        bestCodepage = 1254;
-        bestName = "Windows-1254";
+    if (isTurkish) {
+        float score = turkishScore + (systemCP == 1254 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1254;
+            bestName = "Windows-1254";
+        }
     }
 
-    if (isHebrew && hebrewScore > maxScore) {
-        maxScore = hebrewScore;
-        bestCodepage = 1255;
-        bestName = "Windows-1255";
+    if (isHebrew) {
+        float score = hebrewScore + (systemCP == 1255 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1255;
+            bestName = "Windows-1255";
+        }
     }
 
-    if (isArabic && arabicScore > maxScore) {
-        maxScore = arabicScore;
-        bestCodepage = 1256;
-        bestName = "Windows-1256";
+    if (isArabic) {
+        float score = arabicScore + (systemCP == 1256 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1256;
+            bestName = "Windows-1256";
+        }
     }
 
-    if (isBaltic && balticScore > maxScore) {
-        maxScore = balticScore;
-        bestCodepage = 1257;
-        bestName = "Windows-1257";
+    if (isBaltic) {
+        float score = balticScore + (systemCP == 1257 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1257;
+            bestName = "Windows-1257";
+        }
     }
 
-    if (isVietnamese && vietnameseScore > maxScore) {
-        maxScore = vietnameseScore;
-        bestCodepage = 1258;
-        bestName = "Windows-1258";
+    if (isVietnamese) {
+        float score = vietnameseScore + (systemCP == 1258 ? weight : 0.0f);
+        if (score > maxScore) {
+            maxScore = score;
+            bestCodepage = 1258;
+            bestName = "Windows-1258";
+        }
     }
 
     // Return best match if found

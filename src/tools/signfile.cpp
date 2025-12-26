@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 // signfile produces a cryptographic signature of a given file
@@ -9,8 +9,8 @@
 // over a non-secure channel) is from the same source as the application.
 
 // To produce a usable certificate, use the SDK's makecert.exe tool:
-// makecert -r -n "CN=SumatraPDF Authority" -cy authority -a sha1 -sv sumatra.pvk sumatra.cer
-// makecert -n "CN=SumatraPDF" -ic sumatra.cer -iv sumatra.pvk -a sha1 -sky signature -pe -sr currentuser -ss My
+// makecert -r -n "CN=GurupiaReader Authority" -cy authority -a sha1 -sv sumatra.pvk sumatra.cer
+// makecert -n "CN=GurupiaReader" -ic sumatra.cer -iv sumatra.pvk -a sha1 -sky signature -pe -sr currentuser -ss My
 // sumatra-app.cer
 
 #include "utils/BaseUtil.h"

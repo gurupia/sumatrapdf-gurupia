@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 // code used in both Installer.cpp and Uninstaller.cpp
@@ -176,9 +176,9 @@ TempStr GetShortcutPathTemp(int csidl) {
 
 static char* GetInstalledBrowserPluginPathTemp() {
 #ifndef _WIN64
-    const char* kRegPathPlugin = "Software\\MozillaPlugins\\@mozilla.zeniko.ch/SumatraPDF_Browser_Plugin";
+    const char* kRegPathPlugin = "Software\\MozillaPlugins\\@mozilla.zeniko.ch/GurupiaReader_Browser_Plugin";
 #else
-    const char* kRegPathPlugin = "Software\\MozillaPlugins\\@mozilla.zeniko.ch/SumatraPDF_Browser_Plugin_x64";
+    const char* kRegPathPlugin = "Software\\MozillaPlugins\\@mozilla.zeniko.ch/GurupiaReader_Browser_Plugin_x64";
 #endif
     return LoggedReadRegStr2Temp(kRegPathPlugin, "Path");
 }
@@ -392,7 +392,7 @@ int KillProcessesWithModule(const char* modulePath, bool waitUntilTerminated) {
 // we need to kill all processes that that use files from
 // installation directory. We only need to check processes that
 // have libmupdf.dll from installation directory loaded
-// because that covers SumatraPDF.exe and processes like dllhost.exe
+// because that covers GurupiaReader.exe and processes like dllhost.exe
 // that load PdfPreview.dll or PdfFilter.dll (which link to libmupdf.dll)
 // returns false if there are processes and we failed to kill them
 static bool KillProcessesUsingInstallation() {
@@ -582,7 +582,7 @@ static void RandomizeLetters()
 #define kSumatraLettersCount (dimof(gLetters))
 
 static void SetLettersSumatraUpTo(size_t n) {
-    const char* s = "SUMATRAPDF";
+    const char* s = "GurupiaReader";
     for (size_t i = 0; i < kSumatraLettersCount; i++) {
         char c = ' ';
         if (i < n) {

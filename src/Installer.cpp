@@ -1,4 +1,4 @@
-/* Copyright 2022 the SumatraPDF project authors (see AUTHORS file).
+/* Copyright 2022 the GurupiaReader project authors (see AUTHORS file).
    License: GPLv3 */
 
 #include "utils/BaseUtil.h"
@@ -25,7 +25,7 @@
 #include "Flags.h"
 #include "Version.h"
 #include "Annotation.h"
-#include "SumatraPDF.h"
+#include "GurupiaReader.h"
 #include "AppTools.h"
 #include "RegistryPreview.h"
 #include "RegistrySearchFilter.h"
@@ -149,7 +149,7 @@ static bool CopySelfToDir(const char* destDir) {
     bool ok = file::Copy(dstPath, exePath, failIfExists);
     // strip zone identifier (if exists) to avoid windows
     // complaining when launching the file
-    // https://github.com/sumatrapdfreader/sumatrapdf/issues/1782
+    // https://github.com/GurupiaReaderreader/GurupiaReader/issues/1782
     file::DeleteZoneIdentifier(dstPath);
     if (!ok) {
         logf("  failed to copy '%s' to dir '%s'\n", exePath, destDir);
@@ -487,9 +487,9 @@ static void OnInstallationFinished(Flags* cli) {
         gWnd->btnExit->onClick = MkFunc0Void(OnButtonExit);
         SetMsg(_TRA("Installation failed!"), COLOR_MSG_FAILED);
     } else {
-        gWnd->btnRunSumatra = CreateDefaultButton(gWnd->hwnd, _TRA("Start SumatraPDF"));
+        gWnd->btnRunSumatra = CreateDefaultButton(gWnd->hwnd, _TRA("Start GurupiaReader"));
         gWnd->btnRunSumatra->onClick = MkFunc0Void(OnButtonStartSumatra);
-        SetMsg(_TRA("Thank you! SumatraPDF has been installed."), COLOR_MSG_OK);
+        SetMsg(_TRA("Thank you! GurupiaReader has been installed."), COLOR_MSG_OK);
     }
     gMsgError = gFirstError;
     HwndRepaintNow(gWnd->hwnd);
@@ -535,7 +535,7 @@ static TempStr GetDefaultInstallationDirTemp(bool forAllUsers, bool ignorePrev) 
         return dir;
     }
 
-    // %APPLOCALDATA%\SumatraPDF
+    // %APPLOCALDATA%\GurupiaReader
     TempStr dirUser = GetSpecialFolderTemp(CSIDL_LOCAL_APPDATA, false);
     dir = path::JoinTemp(dirUser, kAppName);
     logf("  using '%s' from GetSpecialFolderTemp(CSIDL_LOCAL_APPDATA)\n", dir);
@@ -652,19 +652,19 @@ static void OnButtonBrowse(InstallerWnd* wnd) {
     auto editDir = wnd->editInstallationDir;
     char* installDir = HwndGetTextTemp(editDir->hwnd);
 
-    // strip a trailing "\SumatraPDF" if that directory doesn't exist (yet)
+    // strip a trailing "\GurupiaReader" if that directory doesn't exist (yet)
     if (!dir::Exists(installDir)) {
         installDir = path::GetDirTemp(installDir);
     }
 
-    auto caption = _TRA("Select the folder where SumatraPDF should be installed:");
+    auto caption = _TRA("Select the folder where GurupiaReader should be installed:");
     char* installPath = BrowseForFolderTemp(wnd->hwnd, installDir, caption);
     if (!installPath) {
         HwndSetFocus(wnd->btnBrowseDir->hwnd);
         return;
     }
 
-    // force paths that aren't entered manually to end in ...\SumatraPDF
+    // force paths that aren't entered manually to end in ...\GurupiaReader
     // to prevent unintended installations into e.g. %ProgramFiles% itself
     char* end = str::JoinTemp("\\", kAppName);
     if (!str::EndsWithI(installPath, end)) {
@@ -708,7 +708,7 @@ static void CreateInstallerWindowControls(InstallerWnd* wnd, Flags* cli) {
     HWND hwnd = wnd->hwnd;
     int margin = DpiScale(hwnd, kInstallerWinMargin);
 
-    wnd->btnInstall = CreateDefaultButton(hwnd, _TRA("Install SumatraPDF"));
+    wnd->btnInstall = CreateDefaultButton(hwnd, _TRA("Install GurupiaReader"));
     auto b = wnd->btnInstall;
     b->onClick = MkFunc0(OnButtonInstall, wnd);
     {
@@ -820,7 +820,7 @@ static void CreateInstallerWindowControls(InstallerWnd* wnd, Flags* cli) {
 
     y -= editDy;
 
-    const char* s2 = _TRA("Install SumatraPDF in &folder:");
+    const char* s2 = _TRA("Install GurupiaReader in &folder:");
     rc = {x, y, x + r.dx, y + staticDy};
 
     Static::CreateArgs args;
@@ -931,7 +931,7 @@ static bool CreateInstallerWnd(Flags* cli) {
         }
     }
 
-    TempStr title = str::FormatTemp(_TRA("SumatraPDF %s Installer"), CURR_VERSION_STRA);
+    TempStr title = str::FormatTemp(_TRA("GurupiaReader %s Installer"), CURR_VERSION_STRA);
     DWORD exStyle = 0;
     if (trans::IsCurrLangRtl()) {
         exStyle = WS_EX_LAYOUTRTL;
@@ -956,7 +956,7 @@ static bool CreateInstallerWnd(Flags* cli) {
 }
 
 static bool CreateInstallerWindow(Flags* cli) {
-    gDefaultMsg = _TRA("Thank you for choosing SumatraPDF!");
+    gDefaultMsg = _TRA("Thank you for choosing GurupiaReader!");
     if (!CreateInstallerWnd(cli)) {
         return false;
     }
@@ -1105,10 +1105,10 @@ static bool MismatchedOSDialog(HWND hwndParent) {
         flags |= TDF_RTL_LAYOUT;
     }
     dialogConfig.cbSize = sizeof(TASKDIALOGCONFIG);
-    s = _TRA("Installing 32-bit SumatraPDF on 64-bit OS");
+    s = _TRA("Installing 32-bit GurupiaReader on 64-bit OS");
     dialogConfig.pszWindowTitle = ToWStrTemp(s);
     // dialogConfig.pszMainInstruction = mainInstr;
-    s = _TRA("You're installing 32-bit SumatraPDF on 64-bit OS.\nWould you like to download\n64-bit version?");
+    s = _TRA("You're installing 32-bit GurupiaReader on 64-bit OS.\nWould you like to download\n64-bit version?");
     dialogConfig.pszContent = ToWStrTemp(s);
     dialogConfig.nDefaultButton = kBtnIdContinue;
     dialogConfig.dwFlags = flags;
@@ -1125,9 +1125,9 @@ static bool MismatchedOSDialog(HWND hwndParent) {
     auto hr = TaskDialogIndirect(&dialogConfig, &buttonPressedId, nullptr, nullptr);
     ReportIf(hr == E_INVALIDARG);
     if (buttonPressedId == kBtnIdDownload) {
-        const char* url = "https://www.sumatrapdfreader.org/download-free-pdf-viewer";
+        const char* url = "https://www.GurupiaReaderreader.org/download-free-pdf-viewer";
         if (gIsPreReleaseBuild) {
-            url = "https://www.sumatrapdfreader.org/prerelease";
+            url = "https://www.GurupiaReaderreader.org/prerelease";
         }
         LaunchBrowser(url);
         return true;
@@ -1152,7 +1152,7 @@ int RunInstaller() {
         bool removeLog = !gCli->runInstallNow;
         StartLogToFile(installerLogPath, removeLog);
     }
-    logf("------------- Starting SumatraPDF installation\n");
+    logf("------------- Starting GurupiaReader installation\n");
     if (!IsProcessAndOsArchSame()) {
         logfa("quitting because !IsProcessAndOsArchSame()\n");
         MismatchedOSDialog(nullptr);
